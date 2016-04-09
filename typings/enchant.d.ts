@@ -39,6 +39,8 @@ declare module enchant {
     class Core{
       constructor(width:number , height:number);
 
+      static instance:Core;
+
       onload:(e)=>void;
       currentScene:Scene;
       on(eventName:string,func:(arg:any)=>void);
@@ -96,6 +98,8 @@ declare module enchant {
        * @return {enchant.Core} this
        */
       preload(assets):Core;
+
+      assets:Array<enchant.Surface>;
 
       /**
        * Start the core.
@@ -388,7 +392,7 @@ declare module enchant {
          *
          * @type Number|Array
          */
-        frame:Number;
+        frame:number;
     }
 
     /**
@@ -452,7 +456,7 @@ declare module enchant {
          * When more than one map data array is set, they are displayed in reverse order.
          * @param {...Number[][]} data Two-dimensional array of tile indizes. Multiple designations possible.
          */
-        loadData(data:Array<Array<number>>);
+        loadData(...data:Array<any>);
 
         /**
          * Checks what tile is present at the given position.

@@ -8,6 +8,8 @@
 	"keywords": "gulp",
 	"devDependencies":{
 		"gulp": "*",
-		"gulp-typescript": "*"
+		"gulp-typescript": "*",
+		"gulp-concat": "*",
+		"merge2": "*"
 	}
 }

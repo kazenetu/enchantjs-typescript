@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "module": "commonjs"
+        , "target": "es5"
+    }
+  ,"compileOnSave": false
+  ,"files":[
+    "../typings/enchant.d.ts"
+    ,"../typings/base.d.ts"
+    ,"./ImageSpriteSample/main.ts"
+  ]
+}
