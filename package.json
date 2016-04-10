@@ -1,11 +1,11 @@
 {
-	"name": "enchant-dts-test",
-	"version": "1.0.0",
-	"description": "enchant-dts-test",
+	"name": "enchantjs-typescript",
+	"version": "0.0.2",
+	"description": "enchantjs-typescript",
 	"author": "kazenetu",
-	"url": "",
+	"url": "https://github.com/kazenetu/enchantjs-typescript",
 	"license": "MIT License",
-	"keywords": "gulp",
+	"keywords": ["enchant.js","TypeScript"],
 	"devDependencies":{
 		"gulp": "*",
 		"gulp-typescript": "*",
