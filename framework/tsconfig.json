@@ -1,16 +1,21 @@
 {
     "compilerOptions": {
-        "module": "commonjs"
-        , "target": "es5"
-        ,"declaration":true
-    }
-  ,"compileOnSave": false
-  ,"files":[
-    "../typings/enchant.d.ts"
-    , "./Interfaces/IRunnable.ts"
-    , "./UIParts/UIParts.ts"
-    , "./UIParts/Character.ts"
-    , "./Base/ResourceManager.ts"
-    , "./Base/GameMain.ts"
-  ]
+        "module": "commonjs",
+        "target": "es5",
+        "declaration": true
+    },
+    "compileOnSave": false,
+    "files": [
+        "../typings/enchant.d.ts",
+        "./Interfaces/IRunnable.ts",
+        "./UIParts/Group.ts",
+        "./UIParts/Label.ts",
+        "./UIParts/Sprite.ts",
+        "./UIParts/NoImageSprite.ts",
+        "./UIParts/Map.ts",
+        "./UIParts/Character.ts",
+        "./Base/ResourceManager.ts",
+        "./Base/GameMain.ts",
+        "./compileEntry.ts"
+    ]
 }
