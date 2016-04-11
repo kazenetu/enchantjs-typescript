@@ -1,66 +1,5 @@
 declare namespace Rf.ETS.FrameWork {
     /**
-     * リソース情報
-     * @classdesc リソース情報クラス
-     * @constructor
-     * @memberof Base
-     */
-    class Resource {
-        Keyword: string;
-        FileName: string;
-        /**
-         * コンストラクタ
-         * @method
-         * @name Base.Resource#Resource
-         * @param {string} keyword - リソースのキー
-         * @param {string} fileName - リソース名
-         */
-        constructor(keyword: string, fileName: string);
-    }
-    /**
-     * リソース管理
-     * @classdesc リソース管理クラス
-     * @constructor
-     * @memberof Base
-     */
-    class ResourceManager {
-        private resources;
-        private resourcePath;
-        /**
-         * コンストラクタ
-         * @method
-         * @name Base.ResourceManager#ResourceManager
-         */
-        constructor();
-        SetResourcePath(path: string): void;
-        /**
-        * リソース名を追加
-        * @method
-        * @name Base.ResourceManager#AddResourceName
-        * @param {string} keyword - リソースのキー
-        * @param {string} fileName - リソース名
-         */
-        AddResourceName(keyword: string, fileName: string): void;
-        /**
-        * リソースの配列を取得
-        * @method
-        * @name Base.ResourceManager#GetResourceNames
-        * @return {string} リソースの配列を返す
-         */
-        GetResourceNames(): Array<string>;
-        /**
-         * リソース名を取得
-         * @method
-         * @name Base.ResourceManager#GetResourceName
-         * @param {string} keyword - リソースのキー
-         * @return {string} リソース名を返す
-         */
-        GetResourceName(keyword: string): string;
-    }
-}
-
-declare namespace Rf.ETS.FrameWork {
-    /**
      * グループUI
      * @classdesc グループUIクラス
      * @constructor
@@ -186,7 +125,6 @@ declare namespace Rf.ETS.FrameWork {
     }
 }
 
-/// <reference path="UIParts.d.ts" />
 declare namespace Rf.ETS.FrameWork {
     /**
      * キャラクタ
@@ -225,8 +163,6 @@ declare namespace Rf.ETS.FrameWork {
     }
 }
 
-/// <reference path="ResourceManager.d.ts" />
-/// <reference path="../UIParts/Character.d.ts" />
 declare namespace Rf.ETS.FrameWork {
     /**
      * ゲームメイン処理
@@ -278,6 +214,72 @@ declare namespace Rf.ETS.FrameWork {
         protected onRun(): void;
     }
 }
+
+declare namespace Rf.ETS.FrameWork {
+    /**
+     * リソース情報
+     * @classdesc リソース情報クラス
+     * @constructor
+     * @memberof Base
+     */
+    class Resource {
+        Keyword: string;
+        FileName: string;
+        /**
+         * コンストラクタ
+         * @method
+         * @name Base.Resource#Resource
+         * @param {string} keyword - リソースのキー
+         * @param {string} fileName - リソース名
+         */
+        constructor(keyword: string, fileName: string);
+    }
+    /**
+     * リソース管理
+     * @classdesc リソース管理クラス
+     * @constructor
+     * @memberof Base
+     */
+    class ResourceManager {
+        private resources;
+        private resourcePath;
+        /**
+         * コンストラクタ
+         * @method
+         * @name Base.ResourceManager#ResourceManager
+         */
+        constructor();
+        SetResourcePath(path: string): void;
+        /**
+        * リソース名を追加
+        * @method
+        * @name Base.ResourceManager#AddResourceName
+        * @param {string} keyword - リソースのキー
+        * @param {string} fileName - リソース名
+         */
+        AddResourceName(keyword: string, fileName: string): void;
+        /**
+        * リソースの配列を取得
+        * @method
+        * @name Base.ResourceManager#GetResourceNames
+        * @return {string} リソースの配列を返す
+         */
+        GetResourceNames(): Array<string>;
+        /**
+         * リソース名を取得
+         * @method
+         * @name Base.ResourceManager#GetResourceName
+         * @param {string} keyword - リソースのキー
+         * @return {string} リソース名を返す
+         */
+        GetResourceName(keyword: string): string;
+    }
+}
+
+/// <reference path="UIParts/UIParts.d.ts" />
+/// <reference path="UIParts/Character.d.ts" />
+/// <reference path="Base/GameMain.d.ts" />
+/// <reference path="Base/ResourceManager.d.ts" />
 
 declare namespace Rf.ETS.FrameWork {
     /**

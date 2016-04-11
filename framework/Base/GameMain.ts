@@ -1,6 +1,3 @@
-/// <reference path="./ResourceManager.ts"/>
-/// <reference path="../UIParts/Character.ts"/>
-
 namespace Rf.ETS.FrameWork {
     /**
      * ゲームメイン処理

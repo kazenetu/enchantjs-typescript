@@ -1,96 +1,3 @@
-var Rf;
-(function (Rf) {
-    var ETS;
-    (function (ETS) {
-        var FrameWork;
-        (function (FrameWork) {
-            /**
-             * リソース情報
-             * @classdesc リソース情報クラス
-             * @constructor
-             * @memberof Base
-             */
-            var Resource = (function () {
-                /**
-                 * コンストラクタ
-                 * @method
-                 * @name Base.Resource#Resource
-                 * @param {string} keyword - リソースのキー
-                 * @param {string} fileName - リソース名
-                 */
-                function Resource(keyword, fileName) {
-                    this.Keyword = keyword;
-                    this.FileName = fileName;
-                }
-                return Resource;
-            }());
-            FrameWork.Resource = Resource;
-            /**
-             * リソース管理
-             * @classdesc リソース管理クラス
-             * @constructor
-             * @memberof Base
-             */
-            var ResourceManager = (function () {
-                /**
-                 * コンストラクタ
-                 * @method
-                 * @name Base.ResourceManager#ResourceManager
-                 */
-                function ResourceManager() {
-                    this.resourcePath = "";
-                    this.resources = new Array();
-                }
-                ResourceManager.prototype.SetResourcePath = function (path) {
-                    this.resourcePath = path;
-                };
-                /**
-                * リソース名を追加
-                * @method
-                * @name Base.ResourceManager#AddResourceName
-                * @param {string} keyword - リソースのキー
-                * @param {string} fileName - リソース名
-                 */
-                ResourceManager.prototype.AddResourceName = function (keyword, fileName) {
-                    this.resources.push(new Resource(keyword, this.resourcePath + fileName));
-                };
-                /**
-                * リソースの配列を取得
-                * @method
-                * @name Base.ResourceManager#GetResourceNames
-                * @return {string} リソースの配列を返す
-                 */
-                ResourceManager.prototype.GetResourceNames = function () {
-                    var result = new Array();
-                    this.resources.forEach(function (value, index) {
-                        result.push(value.FileName);
-                    });
-                    return result;
-                };
-                /**
-                 * リソース名を取得
-                 * @method
-                 * @name Base.ResourceManager#GetResourceName
-                 * @param {string} keyword - リソースのキー
-                 * @return {string} リソース名を返す
-                 */
-                ResourceManager.prototype.GetResourceName = function (keyword) {
-                    var result = "";
-                    this.resources.filter(function (value) {
-                        if (value.Keyword === keyword) {
-                            result = value.FileName;
-                            return false;
-                        }
-                    });
-                    return result;
-                };
-                return ResourceManager;
-            }());
-            FrameWork.ResourceManager = ResourceManager;
-        })(FrameWork = ETS.FrameWork || (ETS.FrameWork = {}));
-    })(ETS = Rf.ETS || (Rf.ETS = {}));
-})(Rf || (Rf = {}));
-
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -289,7 +196,6 @@ var Rf;
     })(ETS = Rf.ETS || (Rf.ETS = {}));
 })(Rf || (Rf = {}));
 
-/// <reference path="../UIParts/UIParts.ts"/>
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -357,8 +263,6 @@ var Rf;
     })(ETS = Rf.ETS || (Rf.ETS = {}));
 })(Rf || (Rf = {}));
 
-/// <reference path="./ResourceManager.ts"/>
-/// <reference path="../UIParts/Character.ts"/>
 var Rf;
 (function (Rf) {
     var ETS;
@@ -438,3 +342,101 @@ var Rf;
         })(FrameWork = ETS.FrameWork || (ETS.FrameWork = {}));
     })(ETS = Rf.ETS || (Rf.ETS = {}));
 })(Rf || (Rf = {}));
+
+var Rf;
+(function (Rf) {
+    var ETS;
+    (function (ETS) {
+        var FrameWork;
+        (function (FrameWork) {
+            /**
+             * リソース情報
+             * @classdesc リソース情報クラス
+             * @constructor
+             * @memberof Base
+             */
+            var Resource = (function () {
+                /**
+                 * コンストラクタ
+                 * @method
+                 * @name Base.Resource#Resource
+                 * @param {string} keyword - リソースのキー
+                 * @param {string} fileName - リソース名
+                 */
+                function Resource(keyword, fileName) {
+                    this.Keyword = keyword;
+                    this.FileName = fileName;
+                }
+                return Resource;
+            }());
+            FrameWork.Resource = Resource;
+            /**
+             * リソース管理
+             * @classdesc リソース管理クラス
+             * @constructor
+             * @memberof Base
+             */
+            var ResourceManager = (function () {
+                /**
+                 * コンストラクタ
+                 * @method
+                 * @name Base.ResourceManager#ResourceManager
+                 */
+                function ResourceManager() {
+                    this.resourcePath = "";
+                    this.resources = new Array();
+                }
+                ResourceManager.prototype.SetResourcePath = function (path) {
+                    this.resourcePath = path;
+                };
+                /**
+                * リソース名を追加
+                * @method
+                * @name Base.ResourceManager#AddResourceName
+                * @param {string} keyword - リソースのキー
+                * @param {string} fileName - リソース名
+                 */
+                ResourceManager.prototype.AddResourceName = function (keyword, fileName) {
+                    this.resources.push(new Resource(keyword, this.resourcePath + fileName));
+                };
+                /**
+                * リソースの配列を取得
+                * @method
+                * @name Base.ResourceManager#GetResourceNames
+                * @return {string} リソースの配列を返す
+                 */
+                ResourceManager.prototype.GetResourceNames = function () {
+                    var result = new Array();
+                    this.resources.forEach(function (value, index) {
+                        result.push(value.FileName);
+                    });
+                    return result;
+                };
+                /**
+                 * リソース名を取得
+                 * @method
+                 * @name Base.ResourceManager#GetResourceName
+                 * @param {string} keyword - リソースのキー
+                 * @return {string} リソース名を返す
+                 */
+                ResourceManager.prototype.GetResourceName = function (keyword) {
+                    var result = "";
+                    this.resources.filter(function (value) {
+                        if (value.Keyword === keyword) {
+                            result = value.FileName;
+                            return false;
+                        }
+                    });
+                    return result;
+                };
+                return ResourceManager;
+            }());
+            FrameWork.ResourceManager = ResourceManager;
+        })(FrameWork = ETS.FrameWork || (ETS.FrameWork = {}));
+    })(ETS = Rf.ETS || (Rf.ETS = {}));
+})(Rf || (Rf = {}));
+
+/// <reference path="./UIParts/UIParts.ts"/>
+/// <reference path="./UIParts/Character.ts"/>
+/// <reference path="./Base/GameMain.ts"/>
+/// <reference path="./Base/ResourceManager.ts"/>
