@@ -3,13 +3,11 @@
         "module": "commonjs"
         , "target": "es5"
         ,"declaration":true
-        ,"sortOutput": true
     }
   ,"compileOnSave": false
   ,"files":[
     "../typings/enchant.d.ts"
     , "./Interfaces/IRunnable.ts"
-    , "./Interfaces/IGameMain.ts"
     , "./UIParts/UIParts.ts"
     , "./UIParts/Character.ts"
     , "./Base/ResourceManager.ts"
