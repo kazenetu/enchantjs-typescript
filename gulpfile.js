@@ -10,7 +10,7 @@ gulp.task('default', function () {
 });
 
 //スーパークラスのビルド
-var buildBasesProject = typescript.createProject('./framework/tsconfig.json');
+var buildBasesProject = typescript.createProject('./framework/tsconfig.json', { sortOutput: true });
 gulp.task('buildBases',function(){
 	var result = gulp.src(["./framework/**/*.ts",'./typings/enchant.d.ts'])
       .pipe(typescript(buildBasesProject));
