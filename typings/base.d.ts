@@ -15,6 +15,9 @@ declare namespace Rf.ETS.FrameWork {
          */
         constructor(parent: enchant.Group);
     }
+}
+
+declare namespace Rf.ETS.FrameWork {
     /**
      * ラベルUI
      * @classdesc ラベルUIクラス
@@ -31,57 +34,9 @@ declare namespace Rf.ETS.FrameWork {
          */
         constructor(parent: enchant.Group);
     }
-    /**
-     * スプライトUI
-     * @classdesc スプライトUIクラス
-     * @constructor
-     * @memberof FrameWork
-     * @extends enchant.Sprite
-     */
-    class Sprite extends enchant.Sprite {
-        protected fileName: string;
-        /**
-         * コンストラクタ
-         * @method
-         * @name FrameWork.Sprite#Sprite
-         * @param {number} width - 表示サイズ.幅
-         * @param {number} height - 表示サイズ.高さ
-         * @param {Object} parent - 親Group
-         */
-        constructor(width: number, height: number, parent: enchant.Group);
-        /**
-         * ファイル名プロパティ
-         * @method
-         * @name FrameWork.Sprite#Sprite
-         * @param {string} value - ファイル名
-         */
-        FileName: string;
-    }
-    /**
-     * イメージ無しスプライトUI
-     * @classdesc イメージ無しスプライトUIクラス
-     * @constructor
-     * @memberof FrameWork
-     * @extends enchant.Sprite
-     */
-    class NoImageSprite extends enchant.Sprite {
-        /**
-         * コンストラクタ
-         * @method
-         * @name FrameWork.NoImageSprite#NoImageSprite
-         * @param {number} width - 表示サイズ.幅
-         * @param {number} height - 表示サイズ.高さ
-         * @param {Object} parent - 親Group
-         */
-        constructor(width: number, height: number, parent: enchant.Group);
-        /**
-         * 塗りつぶし情報の設定
-         * @method
-         * @name FrameWork.NoImageSprite#SetSurface
-         * @param {string} fillStyle - 塗りつぶし情報
-         */
-        SetSurface(fillStyle: string): void;
-    }
+}
+
+declare namespace Rf.ETS.FrameWork {
     /**
      * マップUI
      * @classdesc マップUIクラス
@@ -127,6 +82,63 @@ declare namespace Rf.ETS.FrameWork {
 
 declare namespace Rf.ETS.FrameWork {
     /**
+     * スプライトUI
+     * @classdesc スプライトUIクラス
+     * @constructor
+     * @memberof FrameWork
+     * @extends enchant.Sprite
+     */
+    class Sprite extends enchant.Sprite {
+        protected fileName: string;
+        /**
+         * コンストラクタ
+         * @method
+         * @name FrameWork.Sprite#Sprite
+         * @param {number} width - 表示サイズ.幅
+         * @param {number} height - 表示サイズ.高さ
+         * @param {Object} parent - 親Group
+         */
+        constructor(width: number, height: number, parent: enchant.Group);
+        /**
+         * ファイル名プロパティ
+         * @method
+         * @name FrameWork.Sprite#Sprite
+         * @param {string} value - ファイル名
+         */
+        FileName: string;
+    }
+}
+
+declare namespace Rf.ETS.FrameWork {
+    /**
+     * イメージ無しスプライトUI
+     * @classdesc イメージ無しスプライトUIクラス
+     * @constructor
+     * @memberof FrameWork
+     * @extends enchant.Sprite
+     */
+    class NoImageSprite extends enchant.Sprite {
+        /**
+         * コンストラクタ
+         * @method
+         * @name FrameWork.NoImageSprite#NoImageSprite
+         * @param {number} width - 表示サイズ.幅
+         * @param {number} height - 表示サイズ.高さ
+         * @param {Object} parent - 親Group
+         */
+        constructor(width: number, height: number, parent: enchant.Group);
+        /**
+         * 塗りつぶし情報の設定
+         * @method
+         * @name FrameWork.NoImageSprite#SetSurface
+         * @param {string} fillStyle - 塗りつぶし情報
+         */
+        SetSurface(fillStyle: string): void;
+    }
+}
+
+declare namespace Rf.ETS.FrameWork {
+    /**
      * キャラクタ
      * @classdesc キャラクタクラス
      * @constructor
@@ -160,58 +172,6 @@ declare namespace Rf.ETS.FrameWork {
          * @name UIParts.Character#SetAnime
          */
         SetAnime(): void;
-    }
-}
-
-declare namespace Rf.ETS.FrameWork {
-    /**
-     * ゲームメイン処理
-     * @classdesc ゲームメインクラス
-     * @constructor
-     * @memberof FrameWork
-     */
-    class GameMain {
-        /**
-         * リソース管理
-         */
-        protected resourceManager: ResourceManager;
-        /**
-         * スクリーンサイズ：幅
-         */
-        protected screenWidth: number;
-        /**
-         * スクリーンサイズ：高さ
-         */
-        protected screenHeight: number;
-        /**
-         * enchant.Coreインスタンス
-         */
-        protected enchantInstance: enchant.Core;
-        /**
-         * コンストラクタ
-         * @method
-         * @name FrameWork.GameMain#GameMain
-         */
-        constructor();
-        /**
-         * リソース設定イベント
-         * @method
-         * @name FrameWork.GameMain#resourceLoad
-         */
-        protected onResourceSetting(): void;
-        /**
-         * 初期化イベント
-         * @method
-         * @name FrameWork.GameMain#onInit
-         * @param {Object} parent - 親Group
-         */
-        protected onInit(parent: enchant.Group): void;
-        /**
-         * 実行イベント
-         * @method
-         * @name FrameWork.GameMain#onRun
-         */
-        protected onRun(): void;
     }
 }
 
@@ -276,10 +236,66 @@ declare namespace Rf.ETS.FrameWork {
     }
 }
 
-/// <reference path="UIParts/UIParts.d.ts" />
+declare namespace Rf.ETS.FrameWork {
+    /**
+     * ゲームメイン処理
+     * @classdesc ゲームメインクラス
+     * @constructor
+     * @memberof FrameWork
+     */
+    class GameMain {
+        /**
+         * リソース管理
+         */
+        protected resourceManager: ResourceManager;
+        /**
+         * スクリーンサイズ：幅
+         */
+        protected screenWidth: number;
+        /**
+         * スクリーンサイズ：高さ
+         */
+        protected screenHeight: number;
+        /**
+         * enchant.Coreインスタンス
+         */
+        protected enchantInstance: enchant.Core;
+        /**
+         * コンストラクタ
+         * @method
+         * @name FrameWork.GameMain#GameMain
+         */
+        constructor();
+        /**
+         * リソース設定イベント
+         * @method
+         * @name FrameWork.GameMain#resourceLoad
+         */
+        protected onResourceSetting(): void;
+        /**
+         * 初期化イベント
+         * @method
+         * @name FrameWork.GameMain#onInit
+         * @param {Object} parent - 親Group
+         */
+        protected onInit(parent: enchant.Group): void;
+        /**
+         * 実行イベント
+         * @method
+         * @name FrameWork.GameMain#onRun
+         */
+        protected onRun(): void;
+    }
+}
+
+/// <reference path="UIParts/Group.d.ts" />
+/// <reference path="UIParts/Label.d.ts" />
+/// <reference path="UIParts/Map.d.ts" />
+/// <reference path="UIParts/Sprite.d.ts" />
+/// <reference path="UIParts/NoImageSprite.d.ts" />
 /// <reference path="UIParts/Character.d.ts" />
-/// <reference path="Base/GameMain.d.ts" />
 /// <reference path="Base/ResourceManager.d.ts" />
+/// <reference path="Base/GameMain.d.ts" />
 
 declare namespace Rf.ETS.FrameWork {
     /**

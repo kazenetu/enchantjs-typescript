@@ -31,6 +31,21 @@ var Rf;
                 return Group;
             }(enchant.Group));
             FrameWork.Group = Group;
+        })(FrameWork = ETS.FrameWork || (ETS.FrameWork = {}));
+    })(ETS = Rf.ETS || (Rf.ETS = {}));
+})(Rf || (Rf = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var Rf;
+(function (Rf) {
+    var ETS;
+    (function (ETS) {
+        var FrameWork;
+        (function (FrameWork) {
             /**
              * ラベルUI
              * @classdesc ラベルUIクラス
@@ -53,85 +68,21 @@ var Rf;
                 return Label;
             }(enchant.Label));
             FrameWork.Label = Label;
-            /**
-             * スプライトUI
-             * @classdesc スプライトUIクラス
-             * @constructor
-             * @memberof FrameWork
-             * @extends enchant.Sprite
-             */
-            var Sprite = (function (_super) {
-                __extends(Sprite, _super);
-                /**
-                 * コンストラクタ
-                 * @method
-                 * @name FrameWork.Sprite#Sprite
-                 * @param {number} width - 表示サイズ.幅
-                 * @param {number} height - 表示サイズ.高さ
-                 * @param {Object} parent - 親Group
-                 */
-                function Sprite(width, height, parent) {
-                    _super.call(this, width, height);
-                    parent.addChild(this);
-                    this.fileName = "";
-                }
-                Object.defineProperty(Sprite.prototype, "FileName", {
-                    /**
-                     * ファイル名プロパティ
-                     * @method
-                     * @name FrameWork.Sprite#Sprite
-                     * @param {string} value - ファイル名
-                     */
-                    set: function (value) {
-                        if (this.fileName !== value) {
-                            this.fileName = value;
-                            this.image = enchant.Core.instance.assets[this.fileName];
-                        }
-                    },
-                    enumerable: true,
-                    configurable: true
-                });
-                return Sprite;
-            }(enchant.Sprite));
-            FrameWork.Sprite = Sprite;
-            /**
-             * イメージ無しスプライトUI
-             * @classdesc イメージ無しスプライトUIクラス
-             * @constructor
-             * @memberof FrameWork
-             * @extends enchant.Sprite
-             */
-            var NoImageSprite = (function (_super) {
-                __extends(NoImageSprite, _super);
-                /**
-                 * コンストラクタ
-                 * @method
-                 * @name FrameWork.NoImageSprite#NoImageSprite
-                 * @param {number} width - 表示サイズ.幅
-                 * @param {number} height - 表示サイズ.高さ
-                 * @param {Object} parent - 親Group
-                 */
-                function NoImageSprite(width, height, parent) {
-                    _super.call(this, width, height);
-                    parent.addChild(this);
-                }
-                /**
-                 * 塗りつぶし情報の設定
-                 * @method
-                 * @name FrameWork.NoImageSprite#SetSurface
-                 * @param {string} fillStyle - 塗りつぶし情報
-                 */
-                NoImageSprite.prototype.SetSurface = function (fillStyle) {
-                    var rfView = new enchant.Surface(this.width, this.height);
-                    rfView.context.beginPath();
-                    rfView.context.fillStyle = fillStyle;
-                    rfView.context.rect(0, 0, this.width, this.height);
-                    rfView.context.fill();
-                    this.image = rfView;
-                };
-                return NoImageSprite;
-            }(enchant.Sprite));
-            FrameWork.NoImageSprite = NoImageSprite;
+        })(FrameWork = ETS.FrameWork || (ETS.FrameWork = {}));
+    })(ETS = Rf.ETS || (Rf.ETS = {}));
+})(Rf || (Rf = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var Rf;
+(function (Rf) {
+    var ETS;
+    (function (ETS) {
+        var FrameWork;
+        (function (FrameWork) {
             /**
              * マップUI
              * @classdesc マップUIクラス
@@ -208,6 +159,115 @@ var Rf;
         var FrameWork;
         (function (FrameWork) {
             /**
+             * スプライトUI
+             * @classdesc スプライトUIクラス
+             * @constructor
+             * @memberof FrameWork
+             * @extends enchant.Sprite
+             */
+            var Sprite = (function (_super) {
+                __extends(Sprite, _super);
+                /**
+                 * コンストラクタ
+                 * @method
+                 * @name FrameWork.Sprite#Sprite
+                 * @param {number} width - 表示サイズ.幅
+                 * @param {number} height - 表示サイズ.高さ
+                 * @param {Object} parent - 親Group
+                 */
+                function Sprite(width, height, parent) {
+                    _super.call(this, width, height);
+                    parent.addChild(this);
+                    this.fileName = "";
+                }
+                Object.defineProperty(Sprite.prototype, "FileName", {
+                    /**
+                     * ファイル名プロパティ
+                     * @method
+                     * @name FrameWork.Sprite#Sprite
+                     * @param {string} value - ファイル名
+                     */
+                    set: function (value) {
+                        if (this.fileName !== value) {
+                            this.fileName = value;
+                            this.image = enchant.Core.instance.assets[this.fileName];
+                        }
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                return Sprite;
+            }(enchant.Sprite));
+            FrameWork.Sprite = Sprite;
+        })(FrameWork = ETS.FrameWork || (ETS.FrameWork = {}));
+    })(ETS = Rf.ETS || (Rf.ETS = {}));
+})(Rf || (Rf = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var Rf;
+(function (Rf) {
+    var ETS;
+    (function (ETS) {
+        var FrameWork;
+        (function (FrameWork) {
+            /**
+             * イメージ無しスプライトUI
+             * @classdesc イメージ無しスプライトUIクラス
+             * @constructor
+             * @memberof FrameWork
+             * @extends enchant.Sprite
+             */
+            var NoImageSprite = (function (_super) {
+                __extends(NoImageSprite, _super);
+                /**
+                 * コンストラクタ
+                 * @method
+                 * @name FrameWork.NoImageSprite#NoImageSprite
+                 * @param {number} width - 表示サイズ.幅
+                 * @param {number} height - 表示サイズ.高さ
+                 * @param {Object} parent - 親Group
+                 */
+                function NoImageSprite(width, height, parent) {
+                    _super.call(this, width, height);
+                    parent.addChild(this);
+                }
+                /**
+                 * 塗りつぶし情報の設定
+                 * @method
+                 * @name FrameWork.NoImageSprite#SetSurface
+                 * @param {string} fillStyle - 塗りつぶし情報
+                 */
+                NoImageSprite.prototype.SetSurface = function (fillStyle) {
+                    var rfView = new enchant.Surface(this.width, this.height);
+                    rfView.context.beginPath();
+                    rfView.context.fillStyle = fillStyle;
+                    rfView.context.rect(0, 0, this.width, this.height);
+                    rfView.context.fill();
+                    this.image = rfView;
+                };
+                return NoImageSprite;
+            }(enchant.Sprite));
+            FrameWork.NoImageSprite = NoImageSprite;
+        })(FrameWork = ETS.FrameWork || (ETS.FrameWork = {}));
+    })(ETS = Rf.ETS || (Rf.ETS = {}));
+})(Rf || (Rf = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var Rf;
+(function (Rf) {
+    var ETS;
+    (function (ETS) {
+        var FrameWork;
+        (function (FrameWork) {
+            /**
              * キャラクタ
              * @classdesc キャラクタクラス
              * @constructor
@@ -259,86 +319,6 @@ var Rf;
                 return Character;
             }(Rf.ETS.FrameWork.Sprite));
             FrameWork.Character = Character;
-        })(FrameWork = ETS.FrameWork || (ETS.FrameWork = {}));
-    })(ETS = Rf.ETS || (Rf.ETS = {}));
-})(Rf || (Rf = {}));
-
-var Rf;
-(function (Rf) {
-    var ETS;
-    (function (ETS) {
-        var FrameWork;
-        (function (FrameWork) {
-            /**
-             * ゲームメイン処理
-             * @classdesc ゲームメインクラス
-             * @constructor
-             * @memberof FrameWork
-             */
-            var GameMain = (function () {
-                /**
-                 * コンストラクタ
-                 * @method
-                 * @name FrameWork.GameMain#GameMain
-                 */
-                function GameMain() {
-                    var _this = this;
-                    /**
-                     * スクリーンサイズ：幅
-                     */
-                    this.screenWidth = 640;
-                    /**
-                     * スクリーンサイズ：高さ
-                     */
-                    this.screenHeight = 640;
-                    this.resourceManager = new FrameWork.ResourceManager();
-                    this.resourceManager.SetResourcePath("assets/resources/");
-                    enchant();
-                    //create enchantInstance 
-                    this.enchantInstance = new enchant.Core(this.screenWidth, this.screenHeight);
-                    this.enchantInstance.fps = 10;
-                    //リソース設定イベント
-                    this.onResourceSetting();
-                    //リソースロード
-                    this.enchantInstance.preload(this.resourceManager.GetResourceNames());
-                    this.enchantInstance.onload = function (e) {
-                        //Create Stage
-                        var stage = new enchant.Group();
-                        _this.enchantInstance.currentScene.addChild(stage);
-                        //初期化イベント
-                        _this.onInit(stage);
-                        //フレーム処理                        
-                        _this.enchantInstance.on(enchant.Event.ENTER_FRAME, function () {
-                            _this.onRun();
-                        });
-                    };
-                    this.enchantInstance.start();
-                }
-                /**
-                 * リソース設定イベント
-                 * @method
-                 * @name FrameWork.GameMain#resourceLoad
-                 */
-                GameMain.prototype.onResourceSetting = function () {
-                };
-                /**
-                 * 初期化イベント
-                 * @method
-                 * @name FrameWork.GameMain#onInit
-                 * @param {Object} parent - 親Group
-                 */
-                GameMain.prototype.onInit = function (parent) {
-                };
-                /**
-                 * 実行イベント
-                 * @method
-                 * @name FrameWork.GameMain#onRun
-                 */
-                GameMain.prototype.onRun = function () {
-                };
-                return GameMain;
-            }());
-            FrameWork.GameMain = GameMain;
         })(FrameWork = ETS.FrameWork || (ETS.FrameWork = {}));
     })(ETS = Rf.ETS || (Rf.ETS = {}));
 })(Rf || (Rf = {}));
@@ -436,7 +416,91 @@ var Rf;
     })(ETS = Rf.ETS || (Rf.ETS = {}));
 })(Rf || (Rf = {}));
 
-/// <reference path="./UIParts/UIParts.ts"/>
+var Rf;
+(function (Rf) {
+    var ETS;
+    (function (ETS) {
+        var FrameWork;
+        (function (FrameWork) {
+            /**
+             * ゲームメイン処理
+             * @classdesc ゲームメインクラス
+             * @constructor
+             * @memberof FrameWork
+             */
+            var GameMain = (function () {
+                /**
+                 * コンストラクタ
+                 * @method
+                 * @name FrameWork.GameMain#GameMain
+                 */
+                function GameMain() {
+                    var _this = this;
+                    /**
+                     * スクリーンサイズ：幅
+                     */
+                    this.screenWidth = 640;
+                    /**
+                     * スクリーンサイズ：高さ
+                     */
+                    this.screenHeight = 640;
+                    this.resourceManager = new FrameWork.ResourceManager();
+                    this.resourceManager.SetResourcePath("assets/resources/");
+                    enchant();
+                    //create enchantInstance 
+                    this.enchantInstance = new enchant.Core(this.screenWidth, this.screenHeight);
+                    this.enchantInstance.fps = 10;
+                    //リソース設定イベント
+                    this.onResourceSetting();
+                    //リソースロード
+                    this.enchantInstance.preload(this.resourceManager.GetResourceNames());
+                    this.enchantInstance.onload = function (e) {
+                        //Create Stage
+                        var stage = new enchant.Group();
+                        _this.enchantInstance.currentScene.addChild(stage);
+                        //初期化イベント
+                        _this.onInit(stage);
+                        //フレーム処理                        
+                        _this.enchantInstance.on(enchant.Event.ENTER_FRAME, function () {
+                            _this.onRun();
+                        });
+                    };
+                    this.enchantInstance.start();
+                }
+                /**
+                 * リソース設定イベント
+                 * @method
+                 * @name FrameWork.GameMain#resourceLoad
+                 */
+                GameMain.prototype.onResourceSetting = function () {
+                };
+                /**
+                 * 初期化イベント
+                 * @method
+                 * @name FrameWork.GameMain#onInit
+                 * @param {Object} parent - 親Group
+                 */
+                GameMain.prototype.onInit = function (parent) {
+                };
+                /**
+                 * 実行イベント
+                 * @method
+                 * @name FrameWork.GameMain#onRun
+                 */
+                GameMain.prototype.onRun = function () {
+                };
+                return GameMain;
+            }());
+            FrameWork.GameMain = GameMain;
+        })(FrameWork = ETS.FrameWork || (ETS.FrameWork = {}));
+    })(ETS = Rf.ETS || (Rf.ETS = {}));
+})(Rf || (Rf = {}));
+
+/// <reference path="./UIParts/Group.ts"/>
+/// <reference path="./UIParts/Label.ts"/>
+/// <reference path="./UIParts/Map.ts"/>
+/// <reference path="./UIParts/Sprite.ts"/>
+/// <reference path="./UIParts/NoImageSprite.ts"/>
 /// <reference path="./UIParts/Character.ts"/>
-/// <reference path="./Base/GameMain.ts"/>
 /// <reference path="./Base/ResourceManager.ts"/>
+/// <reference path="./Base/GameMain.ts"/>
