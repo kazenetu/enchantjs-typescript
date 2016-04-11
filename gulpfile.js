@@ -18,7 +18,7 @@ gulp.task('buildBases',function(){
     return merge2[
     result.pipe(typescript.filter(
         buildBasesProject
-        ,{referencedFrom: ['Base\\GameMain.ts']}
+        ,{referencedFrom: ['compileEntry.ts']}
     ))
     //result.js
     .pipe(concat('base.js'))

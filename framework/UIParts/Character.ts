@@ -1,5 +1,3 @@
-/// <reference path="../UIParts/UIParts.ts"/>
-
 namespace Rf.ETS.FrameWork {
     /**
      * キャラクタ
