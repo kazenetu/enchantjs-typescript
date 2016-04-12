@@ -177,6 +177,58 @@ declare namespace Rf.ETS.FrameWork {
 
 declare namespace Rf.ETS.FrameWork {
     /**
+     * ゲームメイン処理
+     * @classdesc ゲームメインクラス
+     * @constructor
+     * @memberof FrameWork
+     */
+    class GameMain {
+        /**
+         * リソース管理
+         */
+        protected resourceManager: ResourceManager;
+        /**
+         * スクリーンサイズ：幅
+         */
+        protected screenWidth: number;
+        /**
+         * スクリーンサイズ：高さ
+         */
+        protected screenHeight: number;
+        /**
+         * enchant.Coreインスタンス
+         */
+        protected enchantInstance: enchant.Core;
+        /**
+         * コンストラクタ
+         * @method
+         * @name FrameWork.GameMain#GameMain
+         */
+        constructor();
+        /**
+         * リソース設定イベント
+         * @method
+         * @name FrameWork.GameMain#resourceLoad
+         */
+        protected onResourceSetting(): void;
+        /**
+         * 初期化イベント
+         * @method
+         * @name FrameWork.GameMain#onInit
+         * @param {Object} parent - 親Group
+         */
+        protected onInit(parent: enchant.Group): void;
+        /**
+         * 実行イベント
+         * @method
+         * @name FrameWork.GameMain#onRun
+         */
+        protected onRun(): void;
+    }
+}
+
+declare namespace Rf.ETS.FrameWork {
+    /**
      * リソース情報
      * @classdesc リソース情報クラス
      * @constructor
@@ -236,66 +288,14 @@ declare namespace Rf.ETS.FrameWork {
     }
 }
 
-declare namespace Rf.ETS.FrameWork {
-    /**
-     * ゲームメイン処理
-     * @classdesc ゲームメインクラス
-     * @constructor
-     * @memberof FrameWork
-     */
-    class GameMain {
-        /**
-         * リソース管理
-         */
-        protected resourceManager: ResourceManager;
-        /**
-         * スクリーンサイズ：幅
-         */
-        protected screenWidth: number;
-        /**
-         * スクリーンサイズ：高さ
-         */
-        protected screenHeight: number;
-        /**
-         * enchant.Coreインスタンス
-         */
-        protected enchantInstance: enchant.Core;
-        /**
-         * コンストラクタ
-         * @method
-         * @name FrameWork.GameMain#GameMain
-         */
-        constructor();
-        /**
-         * リソース設定イベント
-         * @method
-         * @name FrameWork.GameMain#resourceLoad
-         */
-        protected onResourceSetting(): void;
-        /**
-         * 初期化イベント
-         * @method
-         * @name FrameWork.GameMain#onInit
-         * @param {Object} parent - 親Group
-         */
-        protected onInit(parent: enchant.Group): void;
-        /**
-         * 実行イベント
-         * @method
-         * @name FrameWork.GameMain#onRun
-         */
-        protected onRun(): void;
-    }
-}
-
 /// <reference path="UIParts/Group.d.ts" />
 /// <reference path="UIParts/Label.d.ts" />
 /// <reference path="UIParts/Map.d.ts" />
 /// <reference path="UIParts/Sprite.d.ts" />
 /// <reference path="UIParts/NoImageSprite.d.ts" />
 /// <reference path="UIParts/Character.d.ts" />
-/// <reference path="Base/ResourceManager.d.ts" />
 /// <reference path="Base/GameMain.d.ts" />
+/// <reference path="Base/ResourceManager.d.ts" />
 
 declare namespace Rf.ETS.FrameWork {
     /**

@@ -59,6 +59,7 @@ var GameMain = (function (_super) {
     };
     return GameMain;
 }(Rf.ETS.FrameWork.GameMain));
+//ウィンドウロード時にメインクラスのインスタンスを作成する
 window.onload = function (ev) {
     new GameMain();
 };

@@ -5,8 +5,7 @@
     }
   ,"compileOnSave": false
   ,"files":[
-    "../typings/enchant.d.ts"
-    ,"../typings/base.d.ts"
+    "../typings/ets-framework.d.ts"
     ,"./ImageSpriteSample/main.ts"
   ]
 }
