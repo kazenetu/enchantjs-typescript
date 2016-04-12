@@ -330,6 +330,86 @@ var Rf;
         var FrameWork;
         (function (FrameWork) {
             /**
+             * ゲームメイン処理
+             * @classdesc ゲームメインクラス
+             * @constructor
+             * @memberof FrameWork
+             */
+            var GameMain = (function () {
+                /**
+                 * コンストラクタ
+                 * @method
+                 * @name FrameWork.GameMain#GameMain
+                 */
+                function GameMain() {
+                    var _this = this;
+                    /**
+                     * スクリーンサイズ：幅
+                     */
+                    this.screenWidth = 640;
+                    /**
+                     * スクリーンサイズ：高さ
+                     */
+                    this.screenHeight = 640;
+                    this.resourceManager = new FrameWork.ResourceManager();
+                    this.resourceManager.SetResourcePath("assets/resources/");
+                    enchant();
+                    //create enchantInstance 
+                    this.enchantInstance = new enchant.Core(this.screenWidth, this.screenHeight);
+                    this.enchantInstance.fps = 10;
+                    //リソース設定イベント
+                    this.onResourceSetting();
+                    //リソースロード
+                    this.enchantInstance.preload(this.resourceManager.GetResourceNames());
+                    this.enchantInstance.onload = function (e) {
+                        //Create Stage
+                        var stage = new enchant.Group();
+                        _this.enchantInstance.currentScene.addChild(stage);
+                        //初期化イベント
+                        _this.onInit(stage);
+                        //フレーム処理                        
+                        _this.enchantInstance.on(enchant.Event.ENTER_FRAME, function () {
+                            _this.onRun();
+                        });
+                    };
+                    this.enchantInstance.start();
+                }
+                /**
+                 * リソース設定イベント
+                 * @method
+                 * @name FrameWork.GameMain#resourceLoad
+                 */
+                GameMain.prototype.onResourceSetting = function () {
+                };
+                /**
+                 * 初期化イベント
+                 * @method
+                 * @name FrameWork.GameMain#onInit
+                 * @param {Object} parent - 親Group
+                 */
+                GameMain.prototype.onInit = function (parent) {
+                };
+                /**
+                 * 実行イベント
+                 * @method
+                 * @name FrameWork.GameMain#onRun
+                 */
+                GameMain.prototype.onRun = function () {
+                };
+                return GameMain;
+            }());
+            FrameWork.GameMain = GameMain;
+        })(FrameWork = ETS.FrameWork || (ETS.FrameWork = {}));
+    })(ETS = Rf.ETS || (Rf.ETS = {}));
+})(Rf || (Rf = {}));
+
+var Rf;
+(function (Rf) {
+    var ETS;
+    (function (ETS) {
+        var FrameWork;
+        (function (FrameWork) {
+            /**
              * リソース情報
              * @classdesc リソース情報クラス
              * @constructor
@@ -416,91 +496,11 @@ var Rf;
     })(ETS = Rf.ETS || (Rf.ETS = {}));
 })(Rf || (Rf = {}));
 
-var Rf;
-(function (Rf) {
-    var ETS;
-    (function (ETS) {
-        var FrameWork;
-        (function (FrameWork) {
-            /**
-             * ゲームメイン処理
-             * @classdesc ゲームメインクラス
-             * @constructor
-             * @memberof FrameWork
-             */
-            var GameMain = (function () {
-                /**
-                 * コンストラクタ
-                 * @method
-                 * @name FrameWork.GameMain#GameMain
-                 */
-                function GameMain() {
-                    var _this = this;
-                    /**
-                     * スクリーンサイズ：幅
-                     */
-                    this.screenWidth = 640;
-                    /**
-                     * スクリーンサイズ：高さ
-                     */
-                    this.screenHeight = 640;
-                    this.resourceManager = new FrameWork.ResourceManager();
-                    this.resourceManager.SetResourcePath("assets/resources/");
-                    enchant();
-                    //create enchantInstance 
-                    this.enchantInstance = new enchant.Core(this.screenWidth, this.screenHeight);
-                    this.enchantInstance.fps = 10;
-                    //リソース設定イベント
-                    this.onResourceSetting();
-                    //リソースロード
-                    this.enchantInstance.preload(this.resourceManager.GetResourceNames());
-                    this.enchantInstance.onload = function (e) {
-                        //Create Stage
-                        var stage = new enchant.Group();
-                        _this.enchantInstance.currentScene.addChild(stage);
-                        //初期化イベント
-                        _this.onInit(stage);
-                        //フレーム処理                        
-                        _this.enchantInstance.on(enchant.Event.ENTER_FRAME, function () {
-                            _this.onRun();
-                        });
-                    };
-                    this.enchantInstance.start();
-                }
-                /**
-                 * リソース設定イベント
-                 * @method
-                 * @name FrameWork.GameMain#resourceLoad
-                 */
-                GameMain.prototype.onResourceSetting = function () {
-                };
-                /**
-                 * 初期化イベント
-                 * @method
-                 * @name FrameWork.GameMain#onInit
-                 * @param {Object} parent - 親Group
-                 */
-                GameMain.prototype.onInit = function (parent) {
-                };
-                /**
-                 * 実行イベント
-                 * @method
-                 * @name FrameWork.GameMain#onRun
-                 */
-                GameMain.prototype.onRun = function () {
-                };
-                return GameMain;
-            }());
-            FrameWork.GameMain = GameMain;
-        })(FrameWork = ETS.FrameWork || (ETS.FrameWork = {}));
-    })(ETS = Rf.ETS || (Rf.ETS = {}));
-})(Rf || (Rf = {}));
-
 /// <reference path="./UIParts/Group.ts"/>
 /// <reference path="./UIParts/Label.ts"/>
 /// <reference path="./UIParts/Map.ts"/>
 /// <reference path="./UIParts/Sprite.ts"/>
 /// <reference path="./UIParts/NoImageSprite.ts"/>
 /// <reference path="./UIParts/Character.ts"/>
-/// <reference path="./Base/ResourceManager.ts"/>
 /// <reference path="./Base/GameMain.ts"/>
+/// <reference path="./Base/ResourceManager.ts"/>

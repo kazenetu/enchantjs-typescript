@@ -5,7 +5,7 @@
 	}
   ,"compileOnSave": false
   ,"files":[
-    "../../typings/enchant.d.ts"
+    "../../framework/typings/enchant.d.ts"
     ,"./Main.ts"
   ]
 }
