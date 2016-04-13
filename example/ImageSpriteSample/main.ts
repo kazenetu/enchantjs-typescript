@@ -3,7 +3,7 @@ class GameMain  extends Rf.ETS.FrameWork.GameMain
         private group: Rf.ETS.FrameWork.Group = null;
         private sprite: Rf.ETS.FrameWork.Sprite = null;
 
-        /**
+       /**
          * リソース設定イベント
          * @method
          * @name FrameWork.GameMain#resourceLoad
@@ -60,8 +60,5 @@ class GameMain  extends Rf.ETS.FrameWork.GameMain
             }
         }
 } 
-//ウィンドウロード時にメインクラスのインスタンスを作成する
-window.onload = (ev) =>
-{
-    new GameMain();    
-}
+//メインクラスのインスタンス作成
+createMain(GameMain);

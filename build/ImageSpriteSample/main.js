@@ -11,10 +11,10 @@ var GameMain = (function (_super) {
         this.sprite = null;
     }
     /**
-     * リソース設定イベント
-     * @method
-     * @name FrameWork.GameMain#resourceLoad
-     */
+      * リソース設定イベント
+      * @method
+      * @name FrameWork.GameMain#resourceLoad
+      */
     GameMain.prototype.onResourceSetting = function () {
         this.resourceManager.SetResourcePath("../../assets/resources/");
         this.resourceManager.AddResourceName("charaImage", "chara.png");
@@ -59,7 +59,5 @@ var GameMain = (function (_super) {
     };
     return GameMain;
 }(Rf.ETS.FrameWork.GameMain));
-//ウィンドウロード時にメインクラスのインスタンスを作成する
-window.onload = function (ev) {
-    new GameMain();
-};
+//メインクラスのインスタンス作成
+createMain(GameMain);
