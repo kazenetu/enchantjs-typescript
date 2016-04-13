@@ -20,7 +20,7 @@ namespace Rf.ETS.FrameWork {
         /**
          * スクリーンサイズ：高さ
          */
-        protected screenHeight:number = 640;
+        protected screenHeight:number = 480;
 
         /**
          * enchant.Coreインスタンス
