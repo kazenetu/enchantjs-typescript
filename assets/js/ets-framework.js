@@ -350,7 +350,7 @@ var Rf;
                     /**
                      * スクリーンサイズ：高さ
                      */
-                    this.screenHeight = 640;
+                    this.screenHeight = 480;
                     this.resourceManager = new FrameWork.ResourceManager();
                     this.resourceManager.SetResourcePath("assets/resources/");
                     enchant();

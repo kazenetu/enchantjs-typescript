@@ -1,49 +1,407 @@
 declare module enchant {
     class Event{
-      /**
-       * An event which is occurring when a new frame is beeing processed.
-       * Issued object: {@link enchant.Core}, {@link enchant.Node}
-       * @type String
-       */
-      static ENTER_FRAME: string;
-
         /**
-         * An event dispatched when an Entity is rendered.
-         * Issued by: {@link enchant.Entity}
+         * An event dispatched once the core has finished loading.
+         *
+         * When preloading images, it is necessary to wait until preloading is complete
+         * before starting the game.
+         * Issued by: {@link enchant.Core}
+         *
+         * @example
+         * var core = new Core(320, 320);
+         * core.preload('player.gif');
+         * core.onload = function() {
+         *     ... // Describes initial core processing
+         * };
+         * core.start();
          * @type String
          */
-        static RENDER: string;
+        static LOAD:string;
+
+        /**
+         * An event dispatched when an error occurs.
+         * Issued by: {@link enchant.Core}, {@link enchant.Surface}, {@link enchant.WebAudioSound}, {@link enchant.DOMSound}
+         */
+        static ERROR:string;
+
+        /**
+         * An event dispatched when the display size is changed.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         @type String
+        */
+        static CORE_RESIZE:string;
+
+        /**
+         * An event dispatched while the core is loading.
+         * Dispatched each time an image is preloaded.
+         * Issued by: {@link enchant.LoadingScene}
+         * @type String
+         */
+        static PROGRESS:string;
+
+        /**
+         * An event which is occurring when a new frame is beeing processed.
+         * Issued object: {@link enchant.Core}, {@link enchant.Node}
+         * @type String
+         */
+        static ENTER_FRAME:string;
+
+        /**
+         * An event dispatched at the end of processing a new frame.
+         * Issued by: {@link enchant.Core}, {@link enchant.Node}
+         * @type String
+         */
+        static EXIT_FRAME:string;
+
+        /**
+         * An event dispatched when a Scene begins.
+         * Issued by: {@link enchant.Scene}
+         * @type String
+         */
+        static ENTER:string;
+
+        /**
+         * An event dispatched when a Scene ends.
+         * Issued by: {@link enchant.Scene}
+         * @type String
+         */
+        static EXIT:string;
+
+        /**
+         * An event dispatched when a Child is added to a Node.
+         * Issued by: {@link enchant.Group}, {@link enchant.Scene}
+         * @type String
+         */
+        static CHILD_ADDED:string;
+
+        /**
+         * An event dispatched when a Node is added to a Group.
+         * Issued by: {@link enchant.Node}
+         * @type String
+         */
+        static ADDED:string;
+
+        /**
+         * An event dispatched when a Node is added to a Scene.
+         * Issued by: {@link enchant.Node}
+         * @type String
+         */
+        static ADDED_TO_SCENE:string;
+
+        /**
+         * An event dispatched when a Child is removed from a Node.
+         * Issued by: {@link enchant.Group}, {@link enchant.Scene}
+         * @type String
+         * @type String
+         */
+        static CHILD_REMOVED:string;
+
+        /**
+         * An event dispatched when a Node is deleted from a Group.
+         * Issued by: {@link enchant.Node}
+         * @type String
+         */
+        static REMOVED:string;
+
+        /**
+         * An event dispatched when a Node is deleted from a Scene.
+         * Issued by: {@link enchant.Node}
+         * @type String
+         */
+        static REMOVED_FROM_SCENE:string;
 
         /**
          * An event dispatched when a touch event intersecting a Node begins.
          * A mouse event counts as a touch event. Issued by: {@link enchant.Node}
          * @type String
          */
-         static TOUCH_START: string;
+        static TOUCH_START:string;
 
         /**
          * An event dispatched when a touch event intersecting the Node has been moved.
          * A mouse event counts as a touch event. Issued by: {@link enchant.Node}
          * @type String
          */
-        static TOUCH_MOVE: string;
+        static TOUCH_MOVE:string;
 
         /**
-        * An event dispatched when a touch event intersecting the Node ends.
-        * A mouse event counts as a touch event. Issued by: {@link enchant.Node}
-        * @type String
-        */
-        static TOUCH_END: string;
+         * An event dispatched when a touch event intersecting the Node ends.
+         * A mouse event counts as a touch event. Issued by: {@link enchant.Node}
+         * @type String
+         */
+        static TOUCH_END:string;
+
+        /**
+         * An event dispatched when an Entity is rendered.
+         * Issued by: {@link enchant.Entity}
+         * @type String
+         */
+        static RENDER:string;
+
+        /**
+         * An event dispatched when a button is pressed.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static INPUT_START:string;
+
+        /**
+         * An event dispatched when button inputs change.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static INPUT_CHANGE:string;
+
+        /**
+         * An event dispatched when button input ends.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static INPUT_END:string;
+
+        /**
+         * An internal event which is occurring when a input changes.
+         * Issued object: {@link enchant.InputSource}
+         * @type String
+         */
+        static INPUT_STATE_CHANGED:string;
+
+        /**
+         * An event dispatched when the 'left' button is pressed.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static LEFT_BUTTON_DOWN:string;
+
+        /**
+         * An event dispatched when the 'left' button is released.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static LEFT_BUTTON_UP:string;
+
+        /**
+         * An event dispatched when the 'right' button is pressed.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static RIGHT_BUTTON_DOWN:string;
+
+        /**
+         * An event dispatched when the 'right' button is released.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static RIGHT_BUTTON_UP:string;
+
+        /**
+         * An event dispatched when the 'up' button is pressed.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static UP_BUTTON_DOWN:string;
+
+        /**
+         * An event dispatched when the 'up' button is released.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static UP_BUTTON_UP:string;
+
+        /**
+         * An event dispatched when the 'down' button is pressed.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static DOWN_BUTTON_DOWN:string;
+
+        /**
+         * An event dispatched when the 'down' button is released.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static DOWN_BUTTON_UP:string;
+
+        /**
+         * An event dispatched when the 'a' button is pressed.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static A_BUTTON_DOWN:string;
+
+        /**
+         * An event dispatched when the 'a' button is released.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static A_BUTTON_UP:string;
+
+        /**
+         * An event dispatched when the 'b' button is pressed.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static B_BUTTON_DOWN:string;
+
+        /**
+         * An event dispatched when the 'b' button is released.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static B_BUTTON_UP:string;
+
+        /**
+         * An event dispatched when an Action is added to a Timeline.
+         * When looped, an Action is removed from the Timeline and added back into it.
+         * @type String
+         */
+        static ADDED_TO_TIMELINE:string;
+
+        /**
+         * An event dispatched when an Action is removed from a Timeline.
+         * When looped, an Action is removed from the timeline and added back into it.
+         * @type String
+         */
+        static REMOVED_FROM_TIMELINE:string;
+
+        /**
+         * An event dispatched when an Action begins.
+         * @type String
+         */
+        static ACTION_START:string;
+
+        /**
+         * An event dispatched when an Action finishes.
+         * @type String
+         */
+        static ACTION_END:string;
+
+        /**
+         * An event dispatched when an Action has gone through one frame.
+         * @type String
+         */
+        static ACTION_TICK:string;
+
+        /**
+         * An event dispatched to the Timeline when an Action is added.
+         * @type String
+         */
+        static ACTION_ADDED:string;
+
+        /**
+         * An event dispatched to the Timeline when an Action is removed.
+         * @type String
+         */
+        static ACTION_REMOVED:string;
+
+        /**
+         * The type of the event.
+         * @type String
+         */
+        type:string;
+        
+        /**
+         * The target of the event.
+         * @type *
+         */
+        target:any;
+        
+        /**
+         * The x-coordinate of the event's occurrence.
+         * @type Number
+         */
+        x :number;
+
+        /**
+         * The y-coordinate of the event's occurrence.
+         * @type Number
+         */
+        y:number;
+
+        /**
+         * The x-coordinate of the event's occurrence relative to the object
+         * which issued the event.
+         * @type Number
+         */
+        localX:number;
+
+        /**
+         * The y-coordinate of the event's occurrence relative to the object
+         * which issued the event.
+         * @type Number
+         */
+        localY:number;
+
+        /**
+         * @name enchant.Event
+         * @class
+         * A class for an independent implementation of events similar to DOM Events.
+         * Does not include phase concepts.
+         * @param {String} type Event type.
+         * @constructs
+         */
+        constructor(type:string);
+        
+
+    }
+    
+    /**
+     * @scope enchant.EventTarget.prototype
+     */
+    class EventTarget{
+        /**
+         * @name enchant.EventTarget
+         * @class
+         * A class for implementation of events similar to DOM Events.
+         * However, it does not include the concept of phases.
+         * @constructs
+         */
+        constructor();
+
+        /**
+         * Add a new event listener which will be executed when the event
+         * is dispatched.
+         * @param {String} type Type of the events.
+         * @param {Function(e:enchant.Event)} listener Event listener to be added.
+         */
+        addEventListener(type:string, listener:(e:enchant.Event)=>void):void;
+
+        /**
+         * Synonym for addEventListener.
+         * @param {String} type Type of the events.
+         * @param {Function(e:enchant.Event)} listener Event listener to be added.
+         * @see enchant.EventTarget#addEventListener
+         */
+        on(eventName:string,func:(arg:any)=>void);
+        
+        /**
+         * Delete an event listener.
+         * @param {String} [type] Type of the events.
+         * @param {Function(e:enchant.Event)} listener Event listener to be deleted.
+         */
+        removeEventListener(type:string, listener:(e:enchant.Event)=>void):void;
+
+        /**
+         * Clear all defined event listeners of a given type.
+         * If no type is given, all listeners will be removed.
+         * @param {String} type Type of the events.
+         */
+        clearEventListener(type:string);
+
+        /**
+         * Issue an event.
+         * @param {enchant.Event} e Event to be issued.
+         */
+        dispatchEvent(e:enchant.Event);
     }
 
-    class Core{
+    class Core extends EventTarget{
       constructor(width:number , height:number);
 
       static instance:Core;
 
       onload:(e)=>void;
       currentScene:Scene;
-      on(eventName:string,func:(arg:any)=>void);
       fps:number;
 
       /**
@@ -195,7 +553,7 @@ declare module enchant {
     /**
      * @scope enchant.Node.prototype
      */
-    class Node{
+    class Node extends EventTarget{
         /**
          * Move the Node to the given target location.
          * @param {Number} x Target x coordinates.
