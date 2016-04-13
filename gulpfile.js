@@ -28,7 +28,7 @@ gulp.task('_beforeBuildBases',function(){
 });
 
 gulp.task('buildBases',['_beforeBuildBases'], function () {
-    return gulp.src(['./framework/typings/enchant.d.ts','./build/ets-framework.d.ts'])
+    return gulp.src(['./framework/typings/*.d.ts','./build/ets-framework.d.ts'])
             .pipe(concat('ets-framework.d.ts'))
             .pipe(gulp.dest('./typings'));
 });
