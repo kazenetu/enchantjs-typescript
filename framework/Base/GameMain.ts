@@ -68,7 +68,7 @@ namespace Rf.ETS.FrameWork {
         /**
          * リソース設定イベント
          * @method
-         * @name FrameWork.GameMain#resourceLoad
+         * @name FrameWork.GameMain#onResourceSetting
          */
         protected onResourceSetting():void
         {
