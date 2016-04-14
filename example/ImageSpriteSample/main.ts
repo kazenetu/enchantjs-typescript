@@ -3,6 +3,19 @@ class GameMain  extends Rf.ETS.FrameWork.GameMain
         private group: Rf.ETS.FrameWork.Group = null;
         private sprite: Rf.ETS.FrameWork.Sprite = null;
 
+        /**
+         * 初期化イベント
+         * @method
+         * @name FrameWork.GameMain#onInitialize
+         */
+        protected onInitialize():void
+        {
+            //サイズを640x640に変更
+            this.screenHeight = 640;
+            //fpsを10から30に変更
+            this.fps = 30;
+        }
+
        /**
          * リソース設定イベント
          * @method
