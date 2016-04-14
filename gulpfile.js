@@ -35,9 +35,17 @@ gulp.task('buildBases',['_beforeBuildBases'], function () {
 
 //実装例のビルド
 gulp.task('buildExamples', function () {
-    gulp.src(['./example/**/*.ts','./typings/ets-framework.d.ts'])
-		.pipe(typescript('./example/tsconfig.json')).js
-		.pipe(gulp.dest('./build'));
+    return merge2(
+            [
+                gulp.src(['./example/ImageSpriteSample/*.ts','./typings/ets-framework.d.ts'])
+                    .pipe(typescript('./example/tsconfig.json')).js
+                    .pipe(gulp.dest('./build/ImageSpriteSample')),
+
+                gulp.src(['./example/UseEnchantDtsOnly/*.ts','./framework/typings/enchant.d.ts'])
+                    .pipe(typescript('./example/UseEnchantDtsOnly/tsconfig.json')).js
+                    .pipe(gulp.dest('./build/UseEnchantDtsOnly'))
+            ]  
+    );
 });
 
 //テスト
