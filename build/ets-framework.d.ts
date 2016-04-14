@@ -196,6 +196,10 @@ declare namespace Rf.ETS.FrameWork {
          */
         protected screenHeight: number;
         /**
+         * fps
+         */
+        protected fps: number;
+        /**
          * enchant.Coreインスタンス
          */
         protected enchantInstance: enchant.Core;
@@ -205,6 +209,12 @@ declare namespace Rf.ETS.FrameWork {
          * @name FrameWork.GameMain#GameMain
          */
         constructor();
+        /**
+         * 初期化イベント
+         * @method
+         * @name FrameWork.GameMain#onInitialize
+         */
+        protected onInitialize(): void;
         /**
          * リソース設定イベント
          * @method

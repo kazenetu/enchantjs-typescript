@@ -11,6 +11,15 @@ var GameMain = (function (_super) {
         this.sprite = null;
     }
     /**
+     * 初期化イベント
+     * @method
+     * @name FrameWork.GameMain#onInitialize
+     */
+    GameMain.prototype.onInitialize = function () {
+        this.screenHeight = 640;
+        this.fps = 30;
+    };
+    /**
       * リソース設定イベント
       * @method
       * @name FrameWork.GameMain#resourceLoad
