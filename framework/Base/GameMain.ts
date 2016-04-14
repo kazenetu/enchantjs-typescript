@@ -54,8 +54,8 @@ namespace Rf.ETS.FrameWork {
                 let stage = new enchant.Group();
                 this.enchantInstance.currentScene.addChild(stage);
 
-                //初期化イベント
-                this.onInit(stage);
+                //ロードイベント
+                this.onLoad(stage);
                 
                 //フレーム処理                        
                 this.enchantInstance.on(enchant.Event.ENTER_FRAME, () => {
@@ -76,12 +76,12 @@ namespace Rf.ETS.FrameWork {
         }
         
         /**
-         * 初期化イベント
+         * ロードイベント
          * @method
-         * @name FrameWork.GameMain#onInit
+         * @name FrameWork.GameMain#onLoad
          * @param {Object} parent - 親Group
          */
-        protected onInit(parent: enchant.Group):void
+        protected onLoad(parent: enchant.Group):void
         {
         }
         

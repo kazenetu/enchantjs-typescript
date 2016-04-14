@@ -15,12 +15,12 @@ class GameMain  extends Rf.ETS.FrameWork.GameMain
         }
         
         /**
-         * 初期化イベント
+         * ロードイベント
          * @method
-         * @name FrameWork.GameMain#onInit
+         * @name FrameWork.GameMain#onLoad
          * @param {Object} parent - 親Group
          */
-        protected onInit(parent: enchant.Group):void
+        protected onLoad(parent: enchant.Group):void
         {
             //グループインスタンス作成
             this.group = new Rf.ETS.FrameWork.Group(parent);
