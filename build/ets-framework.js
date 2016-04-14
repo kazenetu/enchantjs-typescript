@@ -365,8 +365,8 @@ var Rf;
                         //Create Stage
                         var stage = new enchant.Group();
                         _this.enchantInstance.currentScene.addChild(stage);
-                        //初期化イベント
-                        _this.onInit(stage);
+                        //ロードイベント
+                        _this.onLoad(stage);
                         //フレーム処理                        
                         _this.enchantInstance.on(enchant.Event.ENTER_FRAME, function () {
                             _this.onRun();
@@ -377,17 +377,17 @@ var Rf;
                 /**
                  * リソース設定イベント
                  * @method
-                 * @name FrameWork.GameMain#resourceLoad
+                 * @name FrameWork.GameMain#onResourceSetting
                  */
                 GameMain.prototype.onResourceSetting = function () {
                 };
                 /**
-                 * 初期化イベント
+                 * ロードイベント
                  * @method
-                 * @name FrameWork.GameMain#onInit
+                 * @name FrameWork.GameMain#onLoad
                  * @param {Object} parent - 親Group
                  */
-                GameMain.prototype.onInit = function (parent) {
+                GameMain.prototype.onLoad = function (parent) {
                 };
                 /**
                  * 実行イベント

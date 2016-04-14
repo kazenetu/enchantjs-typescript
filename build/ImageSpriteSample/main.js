@@ -20,12 +20,12 @@ var GameMain = (function (_super) {
         this.resourceManager.AddResourceName("charaImage", "chara.png");
     };
     /**
-     * 初期化イベント
+     * ロードイベント
      * @method
-     * @name FrameWork.GameMain#onInit
+     * @name FrameWork.GameMain#onLoad
      * @param {Object} parent - 親Group
      */
-    GameMain.prototype.onInit = function (parent) {
+    GameMain.prototype.onLoad = function (parent) {
         //グループインスタンス作成
         this.group = new Rf.ETS.FrameWork.Group(parent);
         this.group.y = 100;
