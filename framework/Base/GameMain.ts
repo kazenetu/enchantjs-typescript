@@ -23,6 +23,11 @@ namespace Rf.ETS.FrameWork {
         protected screenHeight:number = 480;
 
         /**
+         * fps
+         */
+        protected fps:number = 10;
+
+        /**
          * enchant.Coreインスタンス
          */
         protected enchantInstance:enchant.Core;
@@ -39,9 +44,12 @@ namespace Rf.ETS.FrameWork {
 
             enchant();
             
+            //初期化イベント
+            this.onInitialize();
+            
             //create enchantInstance 
             this.enchantInstance = new enchant.Core(this.screenWidth,this.screenHeight);
-            this.enchantInstance.fps = 10;
+            this.enchantInstance.fps = this.fps;
             
             //リソース設定イベント
             this.onResourceSetting();
@@ -63,6 +71,16 @@ namespace Rf.ETS.FrameWork {
                 });
             }
             this.enchantInstance.start();
+        }
+
+        /**
+         * 初期化イベント
+         * @method
+         * @name FrameWork.GameMain#onInitialize
+         */
+        protected onInitialize():void
+        {
+            
         }
 
         /**

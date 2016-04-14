@@ -351,12 +351,18 @@ var Rf;
                      * スクリーンサイズ：高さ
                      */
                     this.screenHeight = 480;
+                    /**
+                     * fps
+                     */
+                    this.fps = 10;
                     this.resourceManager = new FrameWork.ResourceManager();
                     this.resourceManager.SetResourcePath("assets/resources/");
                     enchant();
+                    //初期化イベント
+                    this.onInitialize();
                     //create enchantInstance 
                     this.enchantInstance = new enchant.Core(this.screenWidth, this.screenHeight);
-                    this.enchantInstance.fps = 10;
+                    this.enchantInstance.fps = this.fps;
                     //リソース設定イベント
                     this.onResourceSetting();
                     //リソースロード
@@ -374,6 +380,13 @@ var Rf;
                     };
                     this.enchantInstance.start();
                 }
+                /**
+                 * 初期化イベント
+                 * @method
+                 * @name FrameWork.GameMain#onInitialize
+                 */
+                GameMain.prototype.onInitialize = function () {
+                };
                 /**
                  * リソース設定イベント
                  * @method
