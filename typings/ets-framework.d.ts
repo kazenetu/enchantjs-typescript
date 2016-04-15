@@ -1268,6 +1268,16 @@ declare namespace Rf.ETS.FrameWork {
 
 declare namespace Rf.ETS.FrameWork {
     /**
+     * キャラクタの向き
+     * @memberof FrameWork
+     */
+    enum Direction {
+        Up = 0,
+        Right = 1,
+        Down = 2,
+        Left = 3,
+    }
+    /**
      * キャラクタ
      * @classdesc キャラクタクラス
      * @constructor
@@ -1277,7 +1287,7 @@ declare namespace Rf.ETS.FrameWork {
     class Character extends Rf.ETS.FrameWork.Sprite implements Rf.ETS.FrameWork.IRunnable {
         charaIndex: number;
         waitCount: number;
-        dir: number;
+        dir: Direction;
         anime: number;
         /**
          * コンストラクタ
