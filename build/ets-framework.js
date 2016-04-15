@@ -298,10 +298,20 @@ var Rf;
                 function Character(width, height, parent) {
                     _super.call(this, width, height, parent);
                     this.charaIndex = 0;
-                    this.waitCount = 0;
+                    this.maxWaitCount = 1;
                     this.dir = Direction.Down;
+                    this.waitCount = 0;
                     this.anime = 0;
+                    this.isRunAnime = true;
                 }
+                Object.defineProperty(Character.prototype, "Dir", {
+                    set: function (value) {
+                        this.dir = value;
+                        this.SetFrame();
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 /**
                  * 実行処理実行
                  * @method
@@ -309,22 +319,76 @@ var Rf;
                  * @return {boolean} 処理結果を返す
                  */
                 Character.prototype.Run = function () {
-                    this.SetAnime();
-                    //フレーム処理
-                    this.frame = this.charaIndex * 2 + this.dir * 26;
-                    if (this.anime >= 2) {
-                        this.frame += 1;
+                    if (this.SetAnime()) {
+                        //フレーム処理
+                        this.SetFrame();
                     }
                     return true;
+                };
+                /**
+                 * アニメ処理の休止
+                 * @method
+                 * @name UIParts.Character#SuspendAnime
+                 */
+                Character.prototype.SuspendAnime = function () {
+                    this.isRunAnime = false;
+                };
+                /**
+                 * アニメ処理の再開
+                 * @method
+                 * @name UIParts.Character#ResumeAnime
+                 */
+                Character.prototype.ResumeAnime = function () {
+                    this.isRunAnime = true;
+                };
+                /**
+                 * アニメ処理の状態取得
+                 * @method
+                 * @name UIParts.Character#IsRunAnime
+                 * @return {boolean} 実行中はtrue 停止中はfalse
+                 */
+                Character.prototype.IsRunAnime = function () {
+                    return this.isRunAnime;
                 };
                 /**
                  * アニメ実行
                  * @method
                  * @name UIParts.Character#SetAnime
+                 * @return {boolean} フレーム更新実施の可否
                  */
                 Character.prototype.SetAnime = function () {
-                    if (++this.anime >= 4) {
-                        this.anime = 0;
+                    if (this.isRunAnime === false) {
+                        return false;
+                    }
+                    var isUpdateFrame = true;
+                    if (this.maxWaitCount <= 0) {
+                        return false;
+                    }
+                    else {
+                        if (this.waitCount < this.maxWaitCount) {
+                            isUpdateFrame = false;
+                        }
+                        this.waitCount++;
+                    }
+                    if (isUpdateFrame) {
+                        this.anime++;
+                        if (this.anime >= 4) {
+                            this.anime = 0;
+                        }
+                        this.waitCount = 0;
+                    }
+                    return isUpdateFrame;
+                };
+                /**
+                 * フレームの更新
+                 * @method
+                 * @name UIParts.Character#SetFrame
+                 * @return {boolean} フレーム更新実施の可否
+                 */
+                Character.prototype.SetFrame = function () {
+                    this.frame = this.charaIndex * 2 + this.dir * 26;
+                    if (this.anime >= 2) {
+                        this.frame += 1;
                     }
                 };
                 return Character;

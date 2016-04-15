@@ -1286,9 +1286,12 @@ declare namespace Rf.ETS.FrameWork {
      */
     class Character extends Rf.ETS.FrameWork.Sprite implements Rf.ETS.FrameWork.IRunnable {
         charaIndex: number;
-        waitCount: number;
-        dir: Direction;
-        anime: number;
+        Dir: Direction;
+        maxWaitCount: number;
+        private dir;
+        private waitCount;
+        private anime;
+        private isRunAnime;
         /**
          * コンストラクタ
          * @method
@@ -1306,11 +1309,38 @@ declare namespace Rf.ETS.FrameWork {
          */
         Run(): boolean;
         /**
+         * アニメ処理の休止
+         * @method
+         * @name UIParts.Character#SuspendAnime
+         */
+        SuspendAnime(): void;
+        /**
+         * アニメ処理の再開
+         * @method
+         * @name UIParts.Character#ResumeAnime
+         */
+        ResumeAnime(): void;
+        /**
+         * アニメ処理の状態取得
+         * @method
+         * @name UIParts.Character#IsRunAnime
+         * @return {boolean} 実行中はtrue 停止中はfalse
+         */
+        IsRunAnime(): boolean;
+        /**
          * アニメ実行
          * @method
          * @name UIParts.Character#SetAnime
+         * @return {boolean} フレーム更新実施の可否
          */
-        SetAnime(): void;
+        private SetAnime();
+        /**
+         * フレームの更新
+         * @method
+         * @name UIParts.Character#SetFrame
+         * @return {boolean} フレーム更新実施の可否
+         */
+        private SetFrame();
     }
 }
 
