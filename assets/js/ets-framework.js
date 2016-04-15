@@ -268,6 +268,17 @@ var Rf;
         var FrameWork;
         (function (FrameWork) {
             /**
+             * キャラクタの向き
+             * @memberof FrameWork
+             */
+            (function (Direction) {
+                Direction[Direction["Up"] = 0] = "Up";
+                Direction[Direction["Right"] = 1] = "Right";
+                Direction[Direction["Down"] = 2] = "Down";
+                Direction[Direction["Left"] = 3] = "Left";
+            })(FrameWork.Direction || (FrameWork.Direction = {}));
+            var Direction = FrameWork.Direction;
+            /**
              * キャラクタ
              * @classdesc キャラクタクラス
              * @constructor
@@ -288,7 +299,7 @@ var Rf;
                     _super.call(this, width, height, parent);
                     this.charaIndex = 0;
                     this.waitCount = 0;
-                    this.dir = 2;
+                    this.dir = Direction.Down;
                     this.anime = 0;
                 }
                 /**

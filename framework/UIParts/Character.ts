@@ -1,5 +1,16 @@
 namespace Rf.ETS.FrameWork {
     /**
+     * キャラクタの向き
+     * @memberof FrameWork
+     */
+    export enum Direction {
+        Up = 0,
+        Right = 1,
+        Down = 2,
+        Left = 3
+    }
+
+    /**
      * キャラクタ
      * @classdesc キャラクタクラス
      * @constructor
@@ -11,7 +22,7 @@ namespace Rf.ETS.FrameWork {
         public charaIndex: number = 0;
 
         public waitCount: number = 0;
-        public dir: number = 2;
+        public dir: Direction = Direction.Down;
         public anime: number = 0;
 
         /**
