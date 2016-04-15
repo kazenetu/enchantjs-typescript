@@ -48,13 +48,6 @@ gulp.task('buildExamples', function () {
     );
 });
 
-//テスト
-gulp.task('test', function () {
-    gulp.src(['./test/**/*.ts','./framework/typings/enchant.d.ts'])
-		.pipe(typescript('./test/dts/tsconfig.json')).js
-		.pipe(gulp.dest('./build'));
-});
-
 //デフォルト
 gulp.task('default',['buildBases'], function () {
     runsequence('buildExamples');
