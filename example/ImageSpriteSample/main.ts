@@ -2,6 +2,7 @@ class GameMain  extends Rf.ETS.FrameWork.GameMain
 {
         private group: Rf.ETS.FrameWork.Group = null;
         private sprite: Rf.ETS.FrameWork.Sprite = null;
+        private touchCharactor: Rf.ETS.FrameWork.Character = null;
 
         /**
          * 初期化イベント
@@ -51,6 +52,33 @@ class GameMain  extends Rf.ETS.FrameWork.GameMain
             this.sprite.originX = 16; //中心で回転するように設定
             this.sprite.originY = 16; //中心で回転するように設定
             this.sprite.frame = 26*2; //サンプル画像で正面画像を表示する
+
+            //タッチイベント用キャラクタ
+            this.touchCharactor = new Rf.ETS.FrameWork.Character(32,32,parent);
+            this.touchCharactor.FileName = this.resourceManager.GetResourceName("charaImage");
+            this.touchCharactor.charaIndex = 3;
+            this.touchCharactor.Dir = Rf.ETS.FrameWork.Direction.Up;
+            this.touchCharactor.x = 32;
+            this.touchCharactor.y = 32;
+            this.touchCharactor.originX = 16;
+            this.touchCharactor.originY = 16;
+            this.touchCharactor.scale(2.0,2.0);
+            this.touchCharactor.maxWaitCount = 3;
+            this.touchCharactor.addEventListener(enchant.Event.TOUCH_START,(e:enchant.Event)=>{
+                //タッチ開始時は前を向いて、アニメーションを停止させる
+                this.touchCharactor.Dir = Rf.ETS.FrameWork.Direction.Down;
+                this.touchCharactor.SuspendAnime();
+            });
+            this.touchCharactor.addEventListener(enchant.Event.TOUCH_MOVE,(e:enchant.Event)=>{
+                //タッチ中はその位置にキャラクタを移動させる
+                this.touchCharactor.x = e.x;
+                this.touchCharactor.y = e.y;
+            });
+            this.touchCharactor.addEventListener(enchant.Event.TOUCH_END,(e:enchant.Event)=>{
+                //タッチ終了時は後ろを向いて、アニメーションを再開させる
+                this.touchCharactor.Dir = Rf.ETS.FrameWork.Direction.Up;
+                this.touchCharactor.ResumeAnime();
+            });
         }
         
         /**
@@ -71,6 +99,9 @@ class GameMain  extends Rf.ETS.FrameWork.GameMain
             if (this.sprite.rotation >= 360) {
                 this.sprite.rotation = 0;
             }
+
+            //タッチイベント用キャラクタのアニメーションを実行する
+            this.touchCharactor.Run();
         }
 } 
 //メインクラスのインスタンス作成
