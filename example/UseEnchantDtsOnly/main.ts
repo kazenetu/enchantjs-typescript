@@ -40,6 +40,38 @@ game.onload = function() {
     sprite.frame = 26 * 2; //サンプル画像で正面画像を表示する
     group.addChild(sprite);
 
+    //タッチイベント用キャラクタ
+    var isAnime:boolean = true;
+    var dir:number = 0;
+    var charaIndex:number = 3;
+    var maxWaitCount:number = 3;
+    var waitCount:number = 0;
+    var anime:number = 0;
+    var touchCharactor: enchant.Sprite = new enchant.Sprite(32, 32);
+    touchCharactor.image = game.assets['../../assets/resources/chara.png'];
+    touchCharactor.x = 32;
+    touchCharactor.y = 32;
+    touchCharactor.originX = 16;
+    touchCharactor.originY = 16;
+    touchCharactor.frame = charaIndex*2 + 26 * dir;
+    touchCharactor.scale(2.0,2.0);
+    mainPanel.addChild(touchCharactor);
+    touchCharactor.addEventListener(enchant.Event.TOUCH_START,(e:enchant.Event)=>{
+        //タッチ開始時は前を向いて、アニメーションを停止させる
+        dir = 2;
+        isAnime = false;
+    });
+    touchCharactor.addEventListener(enchant.Event.TOUCH_MOVE,(e:enchant.Event)=>{
+        //タッチ中はその位置にキャラクタを移動させる
+        touchCharactor.x = e.x;
+        touchCharactor.y = e.y;
+    });
+    touchCharactor.addEventListener(enchant.Event.TOUCH_END,(e:enchant.Event)=>{
+        //タッチ終了時は後ろを向いて、アニメーションを再開させる
+        dir = 0;
+        isAnime = true;
+    });
+
     game.on(enchant.Event.ENTER_FRAME, function() {
         //グループを右に移動する
         group.x += 2;
@@ -51,6 +83,22 @@ game.onload = function() {
         sprite.rotation += 5;
         if (sprite.rotation >= 360) {
             sprite.rotation = 0;
+        }
+
+        //タッチイベント用キャラクタのアニメーションを実行する
+        if(isAnime){
+            if(waitCount >= maxWaitCount){
+                anime++;
+                if (anime >= 4) {
+                    anime = 0;
+                }
+                waitCount = 0;
+            }
+            waitCount++;
+            touchCharactor.frame = charaIndex*2 + 26 * dir;
+            if (anime >= 2) {
+                touchCharactor.frame += 1;
+            }
         }
     });
 };
