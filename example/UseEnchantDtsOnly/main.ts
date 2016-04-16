@@ -1,11 +1,11 @@
 enchant();
 
 let screenWidth = 640;
-let screenHeight = 480;
+let screenHeight = 640;
 
 //Start
 var game = new enchant.Core(screenWidth, screenHeight);
-game.fps = 10;
+game.fps = 30;
 game.preload(['../../assets/resources/chara.png']);
 
 //ロード完了イベント
@@ -19,6 +19,7 @@ game.onload = function() {
 
     //CreateGroup
     var group = new enchant.Group();
+    group.y = 100; 
     stage.addChild(group);
 
     //画像無しスプライトインスタンス作成

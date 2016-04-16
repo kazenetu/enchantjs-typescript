@@ -16,7 +16,9 @@ var GameMain = (function (_super) {
      * @name FrameWork.GameMain#onInitialize
      */
     GameMain.prototype.onInitialize = function () {
+        //サイズを640x640に変更
         this.screenHeight = 640;
+        //fpsを10から30に変更
         this.fps = 30;
     };
     /**
