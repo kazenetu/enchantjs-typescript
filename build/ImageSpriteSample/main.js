@@ -9,6 +9,7 @@ var GameMain = (function (_super) {
         _super.apply(this, arguments);
         this.group = null;
         this.sprite = null;
+        this.touchCharactor = null;
     }
     /**
      * 初期化イベント
@@ -37,6 +38,7 @@ var GameMain = (function (_super) {
      * @param {Object} parent - 親Group
      */
     GameMain.prototype.onLoad = function (parent) {
+        var _this = this;
         //グループインスタンス作成
         this.group = new Rf.ETS.FrameWork.Group(parent);
         this.group.y = 100;
@@ -50,6 +52,32 @@ var GameMain = (function (_super) {
         this.sprite.originX = 16; //中心で回転するように設定
         this.sprite.originY = 16; //中心で回転するように設定
         this.sprite.frame = 26 * 2; //サンプル画像で正面画像を表示する
+        //タッチイベント用キャラクタ
+        this.touchCharactor = new Rf.ETS.FrameWork.Character(32, 32, parent);
+        this.touchCharactor.FileName = this.resourceManager.GetResourceName("charaImage");
+        this.touchCharactor.charaIndex = 3;
+        this.touchCharactor.Dir = Rf.ETS.FrameWork.Direction.Up;
+        this.touchCharactor.x = 32;
+        this.touchCharactor.y = 32;
+        this.touchCharactor.originX = 16;
+        this.touchCharactor.originY = 16;
+        this.touchCharactor.scale(2.0, 2.0);
+        this.touchCharactor.maxWaitCount = 3;
+        this.touchCharactor.addEventListener(enchant.Event.TOUCH_START, function (e) {
+            //タッチ開始時は前を向いて、アニメーションを停止させる
+            _this.touchCharactor.Dir = Rf.ETS.FrameWork.Direction.Down;
+            _this.touchCharactor.SuspendAnime();
+        });
+        this.touchCharactor.addEventListener(enchant.Event.TOUCH_MOVE, function (e) {
+            //タッチ中はその位置にキャラクタを移動させる
+            _this.touchCharactor.x = e.x;
+            _this.touchCharactor.y = e.y;
+        });
+        this.touchCharactor.addEventListener(enchant.Event.TOUCH_END, function (e) {
+            //タッチ終了時は後ろを向いて、アニメーションを再開させる
+            _this.touchCharactor.Dir = Rf.ETS.FrameWork.Direction.Up;
+            _this.touchCharactor.ResumeAnime();
+        });
     };
     /**
      * 実行イベント
@@ -67,6 +95,8 @@ var GameMain = (function (_super) {
         if (this.sprite.rotation >= 360) {
             this.sprite.rotation = 0;
         }
+        //タッチイベント用キャラクタのアニメーションを実行する
+        this.touchCharactor.Run();
     };
     return GameMain;
 }(Rf.ETS.FrameWork.GameMain));
