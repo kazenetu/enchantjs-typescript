@@ -1,0 +1,1126 @@
+declare module enchant {
+    class Event{
+        /**
+         * An event dispatched once the core has finished loading.
+         *
+         * When preloading images, it is necessary to wait until preloading is complete
+         * before starting the game.
+         * Issued by: {@link enchant.Core}
+         *
+         * @example
+         * var core = new Core(320, 320);
+         * core.preload('player.gif');
+         * core.onload = function() {
+         *     ... // Describes initial core processing
+         * };
+         * core.start();
+         * @type String
+         */
+        static LOAD:string;
+
+        /**
+         * An event dispatched when an error occurs.
+         * Issued by: {@link enchant.Core}, {@link enchant.Surface}, {@link enchant.WebAudioSound}, {@link enchant.DOMSound}
+         */
+        static ERROR:string;
+
+        /**
+         * An event dispatched when the display size is changed.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         @type String
+        */
+        static CORE_RESIZE:string;
+
+        /**
+         * An event dispatched while the core is loading.
+         * Dispatched each time an image is preloaded.
+         * Issued by: {@link enchant.LoadingScene}
+         * @type String
+         */
+        static PROGRESS:string;
+
+        /**
+         * An event which is occurring when a new frame is beeing processed.
+         * Issued object: {@link enchant.Core}, {@link enchant.Node}
+         * @type String
+         */
+        static ENTER_FRAME:string;
+
+        /**
+         * An event dispatched at the end of processing a new frame.
+         * Issued by: {@link enchant.Core}, {@link enchant.Node}
+         * @type String
+         */
+        static EXIT_FRAME:string;
+
+        /**
+         * An event dispatched when a Scene begins.
+         * Issued by: {@link enchant.Scene}
+         * @type String
+         */
+        static ENTER:string;
+
+        /**
+         * An event dispatched when a Scene ends.
+         * Issued by: {@link enchant.Scene}
+         * @type String
+         */
+        static EXIT:string;
+
+        /**
+         * An event dispatched when a Child is added to a Node.
+         * Issued by: {@link enchant.Group}, {@link enchant.Scene}
+         * @type String
+         */
+        static CHILD_ADDED:string;
+
+        /**
+         * An event dispatched when a Node is added to a Group.
+         * Issued by: {@link enchant.Node}
+         * @type String
+         */
+        static ADDED:string;
+
+        /**
+         * An event dispatched when a Node is added to a Scene.
+         * Issued by: {@link enchant.Node}
+         * @type String
+         */
+        static ADDED_TO_SCENE:string;
+
+        /**
+         * An event dispatched when a Child is removed from a Node.
+         * Issued by: {@link enchant.Group}, {@link enchant.Scene}
+         * @type String
+         * @type String
+         */
+        static CHILD_REMOVED:string;
+
+        /**
+         * An event dispatched when a Node is deleted from a Group.
+         * Issued by: {@link enchant.Node}
+         * @type String
+         */
+        static REMOVED:string;
+
+        /**
+         * An event dispatched when a Node is deleted from a Scene.
+         * Issued by: {@link enchant.Node}
+         * @type String
+         */
+        static REMOVED_FROM_SCENE:string;
+
+        /**
+         * An event dispatched when a touch event intersecting a Node begins.
+         * A mouse event counts as a touch event. Issued by: {@link enchant.Node}
+         * @type String
+         */
+        static TOUCH_START:string;
+
+        /**
+         * An event dispatched when a touch event intersecting the Node has been moved.
+         * A mouse event counts as a touch event. Issued by: {@link enchant.Node}
+         * @type String
+         */
+        static TOUCH_MOVE:string;
+
+        /**
+         * An event dispatched when a touch event intersecting the Node ends.
+         * A mouse event counts as a touch event. Issued by: {@link enchant.Node}
+         * @type String
+         */
+        static TOUCH_END:string;
+
+        /**
+         * An event dispatched when an Entity is rendered.
+         * Issued by: {@link enchant.Entity}
+         * @type String
+         */
+        static RENDER:string;
+
+        /**
+         * An event dispatched when a button is pressed.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static INPUT_START:string;
+
+        /**
+         * An event dispatched when button inputs change.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static INPUT_CHANGE:string;
+
+        /**
+         * An event dispatched when button input ends.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static INPUT_END:string;
+
+        /**
+         * An internal event which is occurring when a input changes.
+         * Issued object: {@link enchant.InputSource}
+         * @type String
+         */
+        static INPUT_STATE_CHANGED:string;
+
+        /**
+         * An event dispatched when the 'left' button is pressed.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static LEFT_BUTTON_DOWN:string;
+
+        /**
+         * An event dispatched when the 'left' button is released.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static LEFT_BUTTON_UP:string;
+
+        /**
+         * An event dispatched when the 'right' button is pressed.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static RIGHT_BUTTON_DOWN:string;
+
+        /**
+         * An event dispatched when the 'right' button is released.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static RIGHT_BUTTON_UP:string;
+
+        /**
+         * An event dispatched when the 'up' button is pressed.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static UP_BUTTON_DOWN:string;
+
+        /**
+         * An event dispatched when the 'up' button is released.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static UP_BUTTON_UP:string;
+
+        /**
+         * An event dispatched when the 'down' button is pressed.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static DOWN_BUTTON_DOWN:string;
+
+        /**
+         * An event dispatched when the 'down' button is released.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static DOWN_BUTTON_UP:string;
+
+        /**
+         * An event dispatched when the 'a' button is pressed.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static A_BUTTON_DOWN:string;
+
+        /**
+         * An event dispatched when the 'a' button is released.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static A_BUTTON_UP:string;
+
+        /**
+         * An event dispatched when the 'b' button is pressed.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static B_BUTTON_DOWN:string;
+
+        /**
+         * An event dispatched when the 'b' button is released.
+         * Issued by: {@link enchant.Core}, {@link enchant.Scene}
+         * @type String
+         */
+        static B_BUTTON_UP:string;
+
+        /**
+         * An event dispatched when an Action is added to a Timeline.
+         * When looped, an Action is removed from the Timeline and added back into it.
+         * @type String
+         */
+        static ADDED_TO_TIMELINE:string;
+
+        /**
+         * An event dispatched when an Action is removed from a Timeline.
+         * When looped, an Action is removed from the timeline and added back into it.
+         * @type String
+         */
+        static REMOVED_FROM_TIMELINE:string;
+
+        /**
+         * An event dispatched when an Action begins.
+         * @type String
+         */
+        static ACTION_START:string;
+
+        /**
+         * An event dispatched when an Action finishes.
+         * @type String
+         */
+        static ACTION_END:string;
+
+        /**
+         * An event dispatched when an Action has gone through one frame.
+         * @type String
+         */
+        static ACTION_TICK:string;
+
+        /**
+         * An event dispatched to the Timeline when an Action is added.
+         * @type String
+         */
+        static ACTION_ADDED:string;
+
+        /**
+         * An event dispatched to the Timeline when an Action is removed.
+         * @type String
+         */
+        static ACTION_REMOVED:string;
+
+        /**
+         * The type of the event.
+         * @type String
+         */
+        type:string;
+        
+        /**
+         * The target of the event.
+         * @type *
+         */
+        target:any;
+        
+        /**
+         * The x-coordinate of the event's occurrence.
+         * @type Number
+         */
+        x :number;
+
+        /**
+         * The y-coordinate of the event's occurrence.
+         * @type Number
+         */
+        y:number;
+
+        /**
+         * The x-coordinate of the event's occurrence relative to the object
+         * which issued the event.
+         * @type Number
+         */
+        localX:number;
+
+        /**
+         * The y-coordinate of the event's occurrence relative to the object
+         * which issued the event.
+         * @type Number
+         */
+        localY:number;
+
+        /**
+         * @name enchant.Event
+         * @class
+         * A class for an independent implementation of events similar to DOM Events.
+         * Does not include phase concepts.
+         * @param {String} type Event type.
+         * @constructs
+         */
+        constructor(type:string);
+        
+
+    }
+    
+    /**
+     * @scope enchant.EventTarget.prototype
+     */
+    class EventTarget{
+        /**
+         * @name enchant.EventTarget
+         * @class
+         * A class for implementation of events similar to DOM Events.
+         * However, it does not include the concept of phases.
+         * @constructs
+         */
+        constructor();
+
+        /**
+         * Add a new event listener which will be executed when the event
+         * is dispatched.
+         * @param {String} type Type of the events.
+         * @param {Function(e:enchant.Event)} listener Event listener to be added.
+         */
+        addEventListener(type:string, listener:(e:enchant.Event)=>void):void;
+
+        /**
+         * Synonym for addEventListener.
+         * @param {String} type Type of the events.
+         * @param {Function(e:enchant.Event)} listener Event listener to be added.
+         * @see enchant.EventTarget#addEventListener
+         */
+        on(eventName:string,func:(arg:any)=>void);
+        
+        /**
+         * Delete an event listener.
+         * @param {String} [type] Type of the events.
+         * @param {Function(e:enchant.Event)} listener Event listener to be deleted.
+         */
+        removeEventListener(type:string, listener:(e:enchant.Event)=>void):void;
+
+        /**
+         * Clear all defined event listeners of a given type.
+         * If no type is given, all listeners will be removed.
+         * @param {String} type Type of the events.
+         */
+        clearEventListener(type:string);
+
+        /**
+         * Issue an event.
+         * @param {enchant.Event} e Event to be issued.
+         */
+        dispatchEvent(e:enchant.Event);
+    }
+
+    class Core extends EventTarget{
+      constructor(width:number , height:number);
+
+      static instance:Core;
+
+      onload:(e)=>void;
+      currentScene:Scene;
+      fps:number;
+
+      /**
+       * The width of the core screen.
+       * @type Number
+       */
+      width:number;
+
+      /**
+       * The height of the core screen.
+       * @type Number
+       */
+      height:number;
+
+      /**
+       * The scaling of the core rendering.
+       * @type Number
+       */
+      scale:number;
+
+      /**
+       * File preloader.
+       *
+       * Loads the files specified in the parameters when
+       * {@link enchant.Core#start} is called.
+       * When all files are loaded, a {@link enchant.Event.LOAD}
+       * event is dispatched from the Core object. Depending on the
+       * type of each file, different objects will be created and
+       * stored in {@link enchant.Core#assets} Variable.
+       *
+       * When an image file is loaded, a {@link enchant.Surface} is
+       * created. If a sound file is loaded, an {@link enchant.Sound}
+       * object is created. Any other file type will be accessible
+       * as a string.
+       *
+       * In addition, because this Surface object is created with
+       * {@link enchant.Surface.load}, it is not possible to
+       * manipulate the image directly.
+       * Refer to the {@link enchant.Surface.load} documentation.
+       *
+       * @example
+       * core.preload('player.gif');
+       * core.onload = function() {
+       *     var sprite = new Sprite(32, 32);
+       *     sprite.image = core.assets['player.gif']; // Access via path
+       *     ...
+       * };
+       * core.start();
+       *
+       * @param {...String|String[]} assets Path of images to be preloaded.
+       * Multiple settings possible.
+       * @return {enchant.Core} this
+       */
+      preload(assets):Core;
+
+      assets:Array<enchant.Surface>;
+
+      /**
+       * Start the core.
+       *
+       * Sets the framerate of the {@link enchant.Core#currentScene}
+       * according to the value stored in {@link enchant.core#fps}. If
+       * there are images to preload, loading will begin and the
+       * loading screen will be displayed.
+       * @return {enchant.Deferred}
+       */
+      start(deferred?:any):Deferred;
+
+      getTime():number;
+
+      /**
+       * Stops the core.
+       *
+       * The frame will not be updated, and player input will not be accepted anymore.
+       * Core can be restarted using {@link enchant.Core#resume}.
+       */
+      stop();
+
+      /**
+       * Stops the core.
+       *
+       * The frame will not be updated, and player input will not be accepted anymore.
+       * Core can be started again using {@link enchant.Core#resume}.
+       */
+      pause();
+
+      /**
+       * Resumes core operations.
+       */
+      resume();
+
+      /**
+       * Switches to a new Scene.
+       *
+       * Scenes are controlled using a stack, with the top scene on
+       * the stack being the one displayed.
+       * When {@link enchant.Core#pushScene} is executed, the Scene is
+       * placed top of the stack. Frames will be only updated for the
+       * Scene which is on the top of the stack.
+       *
+       * @param {enchant.Scene} scene The new scene to display.
+       * @return {enchant.Scene} The new Scene.
+       */
+      pushScene(scene):Scene;
+
+      /**
+       * Ends the current Scene and returns to the previous Scene.
+       *
+       * Scenes are controlled using a stack, with the top scene on
+       * the stack being the one displayed.
+       * When {@link enchant.Core#popScene} is executed, the Scene at
+       * the top of the stack is removed and returned.
+       *
+       * @return {enchant.Scene} Removed Scene.
+       */
+      popScene():Scene;
+
+      /**
+       * Overwrites the current Scene with a new Scene.
+       *
+       * Executes {@link enchant.Core#popScene} and {@link enchant.Core#pushScene}
+       * one after another to replace the current scene with the new scene.
+       *
+       * @param {enchant.Scene} scene The new scene with which to replace the current scene.
+       * @return {enchant.Scene} The new Scene.
+       */
+      replaceScene(scene:Scene):Scene;
+
+      /**
+       * Removes a Scene from the Scene stack.
+       *
+       * If the scene passed in as a parameter is not the current
+       * scene, the stack will be searched for the given scene.
+       * If the given scene does not exist anywhere in the stack,
+       * this method returns null.
+       *
+       * @param {enchant.Scene} scene Scene to be removed.
+       * @return {enchant.Scene} The deleted Scene.
+       */
+      removeScene(scene:Scene):Scene;
+
+      /**
+       * Get the core time (not actual) elapsed since {@link enchant.Core#start} was called.
+       * @return {Number} Time elapsed (in seconds).
+       */
+      getElapsedTime():number;
+    }
+
+    /**
+     * @scope enchant.Node.prototype
+     */
+    class Node extends EventTarget{
+        /**
+         * Move the Node to the given target location.
+         * @param {Number} x Target x coordinates.
+         * @param {Number} y Target y coordinates.
+         */
+        moveTo(x, y);
+
+        /**
+         * Move the Node relative to its current position.
+         * @param {Number} x x axis movement distance.
+         * @param {Number} y y axis movement distance.
+         */
+        moveBy(x, y);
+
+        /**
+         * x coordinates of the Node.
+         * @type Number
+         */
+        x:number;
+
+        /**
+         * y coordinates of the Node.
+         * @type Number
+         */
+        y:number;
+
+        remove();
+    }
+
+    /**
+     * @scope enchant.Entity.prototype
+     */
+    class Entity extends Node{
+        /**
+         * The width of the Entity.
+         * @type Number
+         */
+        width:number;
+
+        /**
+         * The height of the Entity.
+         * @type Number
+         */
+        height:number;
+
+        /**
+         * The Entity background color.
+         * Must be provided in the same format as the CSS 'color' property.
+         * @type String
+         */
+        backgroundColor:string;
+
+        /**
+         * The Entity debug color.
+         * Must be provided in the same format as the CSS 'color' property.
+         * @type String
+         */
+        debugColor:string;
+
+        /**
+         * The transparency of this entity.
+         * Defines the transparency level from 0 to 1
+         * (0 is completely transparent, 1 is completely opaque).
+         * @type Number
+         */
+        opacity:number;
+
+        /**
+         * Indicates whether or not to display this Entity.
+         * @type Boolean
+         */
+        visible:boolean;
+
+        /**
+         * Indicates whether or not this Entity can be touched.
+         * @type Boolean
+         */
+        touchEnabled:boolean;
+
+        /**
+         * Performs a collision detection based on whether or not the bounding rectangles are intersecting.
+         * @param {*} other An object like Entity, with the properties x, y, width, height, which are used for the
+         * collision detection.
+         * @return {Boolean} True, if a collision was detected.
+         */
+        intersect(other:Entity):boolean;
+
+        /**
+         * Performs a collision detection based on distance from the Entity's central point.
+         * @param {*} other An object like Entity, with properties x, y, width, height, which are used for the
+         * collision detection.
+         * @param {Number} [distance] The greatest distance to be considered for a collision.
+         * The default distance is the average of both objects width and height.
+         * @return {Boolean} True, if a collision was detected.
+         */
+        within(other:Entity, distance:number):boolean;
+
+        /**
+         * Enlarges or shrinks this Entity.
+         * @param {Number} x Scaling factor on the x axis.
+         * @param {Number} [y] Scaling factor on the y axis.
+         */
+        scale(x:number, y:number);
+
+        /**
+         * Rotate this Entity.
+         * @param {Number} deg Rotation angle (degree).
+         */
+        rotate(deg:number);
+
+        /**
+         * Scaling factor on the x axis of this Entity.
+         * @type Number
+         */
+        scaleX:number;
+
+        /**
+         * Scaling factor on the y axis of this Entity.
+         * @type Number
+         */
+        scaleY:number;
+
+        /**
+         * Entity rotation angle (degree).
+         * @type Number
+         */
+        rotation:number;
+
+        /**
+         * The point of origin used for rotation and scaling.
+         * @type Number
+         */
+        originX:number;
+
+        /**
+         * The point of origin used for rotation and scaling.
+         * @type Number
+         */
+        originY:number;
+
+        /**
+         */
+        enableCollection();
+
+        /**
+         */
+        disableCollection();
+
+        getBoundingRect():{left:number,top:number,width:number,height:number};
+
+        getOrientedBoundingRect():{leftTop:number,rightTop:number,leftBottom:number,rightBottom:number};
+    }
+
+    /**
+     * @scope enchant.Sprite.prototype
+     */
+    class Sprite extends Entity
+    {
+        /**
+         * @name enchant.Sprite
+         * @class
+         * Class which can display images.
+         * @param {Number} width Sprite width.
+         * @param {Number} height Sprite height.
+         *
+         * @example
+         * var bear = new Sprite(32, 32);
+         * bear.image = core.assets['chara1.gif'];
+         *
+         * @constructs
+         * @extends enchant.Entity
+         */
+        constructor(width:number, height:number);
+
+        /**
+         * Image displayed in the Sprite.
+         * @type enchant.Surface
+         */
+        image:Surface;
+
+        /**
+         * Indizes of the frames to be displayed.
+         * Frames with same width and height as Sprite will be arrayed from upper left corner of the
+         * {@link enchant.Sprite#image} image. When a sequence of numbers is provided, the displayed frame
+         * will switch automatically. At the end of the array the sequence will restart. By setting
+         * a value within the sequence to null, the frame switching is stopped.
+         *
+         * @example
+         * var sprite = new Sprite(32, 32);
+         * sprite.frame = [0, 1, 0, 2]
+         * //-> 0, 1, 0, 2, 0, 1, 0, 2,..
+         * sprite.frame = [0, 1, 0, 2, null]
+         * //-> 0, 1, 0, 2, (2, 2,.. :stop)
+         *
+         * @type Number|Array
+         */
+        frame:number;
+    }
+
+    /**
+     * @scope enchant.Label.prototype
+     */
+    class Label extends Entity
+    {
+        /**
+         * @name enchant.Label
+         * @class
+         * A class for Label object.
+         * @constructs
+         * @extends enchant.Entity
+         */
+        constructor(text:string);
+
+        text:string;
+
+        /**
+         * Specifies horizontal alignment of text.
+         * Can be set according to the format of the CSS 'text-align' property.
+         * @type String
+         */
+        textAlign:string;
+
+        /**
+         * Font settings.
+         * Can be set according to the format of the CSS 'font' property.
+         * @type String
+         */
+        font:string;
+
+        /**
+         * Text color settings.
+         * Can be set according to the format of the CSS 'color' property.
+         * @type String
+         */
+        color:string;
+    }
+
+    /**
+     * @scope enchant.Map.prototype
+     */
+    class Map extends Entity
+    {
+        /**
+         * @name enchant.Map
+         * @class
+         * A class to create and display maps from a tile set.
+         * @param {Number} tileWidth Tile width.
+         * @param {Number} tileHeight Tile height.
+         * @constructs
+         * @extends enchant.Entity
+         */
+        constructor(tileWidth:number, tileHeight:number);
+
+        /**
+         * Set map data.
+         * Sets the tile data, whereas the data (two-dimensional array with indizes starting from 0)
+         * is mapped on the image starting from the upper left corner.
+         * When more than one map data array is set, they are displayed in reverse order.
+         * @param {...Number[][]} data Two-dimensional array of tile indizes. Multiple designations possible.
+         */
+        loadData(...data:Array<any>);
+
+        /**
+         * Checks what tile is present at the given position.
+         * @param {Number} x x coordinates of the point on the map.
+         * @param {Number} y y coordinates of the point on the map.
+         * @return {*} The tile data for the given position.
+         */
+        checkTile(x:number, y:number):number;
+
+        /**
+         * Judges whether or not obstacles are on top of Map.
+         * @param {Number} x x coordinates of detection spot on map.
+         * @param {Number} y y coordinates of detection spot on map.
+         * @return {Boolean} True, if there are obstacles.
+         */
+        hitTest(x:number, y:number):boolean;
+
+        /**
+         * Image with which the tile set is displayed on the map.
+         * @type enchant.Surface
+         */
+        image:Surface;
+
+        /**
+         * Map tile width.
+         * @type Number
+         */
+        tileWidth:number;
+
+        /**
+         * Map tile height.
+         * @type Number
+         */
+        tileHeight:number;
+
+        /**
+         * @private
+         */
+        width:number;
+
+        /**
+         * @private
+         */
+        height:number;
+
+        /**
+         * @private
+         */
+        redraw(x:number, y:number, width:number, height:number);
+    }
+
+    /**
+     * @scope enchant.Group.prototype
+     */
+    class Group extends Node
+    {
+        /**
+         * Adds a Node to the Group.
+         * @param {enchant.Node} node Node to be added.
+         */
+        addChild(node:Node);
+                /**
+         * Incorporates Node into Group.
+         * @param {enchant.Node} node Node to be incorporated.
+         * @param {enchant.Node} reference Node in position before insertion.
+         */
+        insertBefore(node:Node, reference:Node);
+
+        /**
+         * Remove a Node from the Group.
+         * @param {enchant.Node} node Node to be deleted.
+         */
+        removeChild(node:Node);
+
+        /**
+         * The Node which is the first child.
+         * @type enchant.Node
+         */
+        firstChild:Node;
+
+        /**
+         * The Node which is the last child.
+         * @type enchant.Node
+         */
+        lastChild:Node;
+
+        /**
+        * Group rotation angle (degree).
+        * @type Number
+        */
+        rotation:number;
+
+        /**
+        * Scaling factor on the x axis of the Group.
+        * @type Number
+        * @see enchant.Group#originX
+        * @see enchant.Group#originY
+        */
+        scaleX:number;
+
+        /**
+        * Scaling factor on the y axis of the Group.
+        * @type Number
+        * @see enchant.Group#originX
+        * @see enchant.Group#originY
+        */
+        scaleY:number;
+
+        /**
+        * origin point of rotation, scaling
+        * @type Number
+        */
+        originX:number;
+
+        /**
+        * origin point of rotation, scaling
+        * @type Number
+        */
+        originY:number;
+
+    }
+
+    /**
+     * @scope enchant.Scene.prototype
+     */
+    class Scene extends Group
+    {
+        width:number;
+        height:number;
+        backgroundColor:string;
+    }
+
+    /**
+     * @scope enchant.CanvasScene.prototype
+     */
+    class CanvasScene extends Scene
+    {
+    }
+
+    /**
+     * @scope enchant.Surface.prototype
+     */
+    class Surface extends EventTarget
+    {
+        /**
+         * @name enchant.Surface
+         * @class
+         * Class that wraps canvas elements.
+         *
+         * Can be used to set the {@link enchant.Sprite} and {@link enchant.Map}'s image properties to be displayed.
+         * If you wish to access Canvas API use the {@link enchant.Surface#context} property.
+         *
+         * @example
+         * // Creates Sprite that displays a circle.
+         * var ball = new Sprite(50, 50);
+         * var surface = new Surface(50, 50);
+         * surface.context.beginPath();
+         * surface.context.arc(25, 25, 25, 0, Math.PI*2, true);
+         * surface.context.fill();
+         * ball.image = surface;
+         *
+         * @param {Number} width Surface width.
+         * @param {Number} height Surface height.
+         * @constructs
+         * @extends enchant.EventTarget
+         */
+        constructor(width:number, height:number);
+
+        context:any;
+
+        /**
+         * Returns 1 pixel from the Surface.
+         * @param {Number} x The pixel's x coordinates.
+         * @param {Number} y The pixel's y coordinates.
+         * @return {Number[]} An array that holds pixel information in [r, g, b, a] format.
+         */
+        getPixel(x:number, y:number):Array<number>;
+
+        /**
+         * Sets one pixel within the surface.
+         * @param {Number} x The pixel's x coordinates.
+         * @param {Number} y The pixel's y coordinates.
+         * @param {Number} r The pixel's red level.
+         * @param {Number} g The pixel's green level.
+         * @param {Number} b The pixel's blue level.
+         * @param {Number} a The pixel's transparency.
+         */
+        setPixel(x:number, y:number, r:number, g:number, b:number, a:number);
+
+        /**
+         * Clears all Surface pixels and makes the pixels transparent.
+         */
+        clear();
+
+        /**
+         * Draws the content of the given Surface onto this surface.
+         *
+         * Wraps Canvas API drawImage and if multiple arguments are given,
+         * these are getting applied to the Canvas drawImage method.
+         *
+         * @example
+         * var src = core.assets['src.gif'];
+         * var dst = new Surface(100, 100);
+         * dst.draw(src);         // Draws source at (0, 0)
+         * dst.draw(src, 50, 50); // Draws source at (50, 50)
+         * // Draws just 30 horizontal and vertical pixels of source at (50, 50)
+         * dst.draw(src, 50, 50, 30, 30);
+         * // Takes the image content in src starting at (10,10) with a (Width, Height) of (40,40),
+         * // scales it and draws it in this surface at (50, 50) with a (Width, Height) of (30,30).
+         * dst.draw(src, 10, 10, 40, 40, 50, 50, 30, 30);
+         *
+         * @param {enchant.Surface} image Surface used in drawing.
+         */
+        draw(image:Surface);
+                /**
+         * Copies Surface.
+         * @return {enchant.Surface} The copied Surface.
+         */
+        clone():Surface;
+
+        /**
+         * Creates a data URI scheme from this Surface.
+         * @return {String} The data URI scheme that identifies this Surface and
+         * can be used to include this Surface into a dom tree.
+         */
+        toDataURL():string;
+
+        /**
+         * Loads an image and creates a Surface object out of it.
+         *
+         * It is not possible to access properties or methods of the {@link enchant.Surface#context}, or to call methods using the Canvas API -
+         * like {@link enchant.Surface#draw}, {@link enchant.Surface#clear}, {@link enchant.Surface#getPixel}, {@link enchant.Surface#setPixel}.. -
+         * of the wrapped image created with this method.
+         * However, it is possible to use this surface to draw it to another surface using the {@link enchant.Surface#draw} method.
+         * The resulting surface can then be manipulated. (when loading images in a cross-origin resource sharing environment,
+         * pixel acquisition and other image manipulation might be limited).
+         *
+         * @param {String} src The file path of the image to be loaded.
+         * @param {Function} callback on load callback.
+         * @param {Function} [onerror] on error callback.
+         * @static
+         * @return {enchant.Surface} Surface
+         */
+        load(src:string, callback:()=>void, onerror:()=>void);
+    }
+
+    class Deferred
+    {
+            /**
+             * @param {Function} func
+             */
+            next(func:(any)=>any):any;
+
+            /**
+             * @param {Function} func
+             */
+            error(func:(any)=>any):any;
+
+            /**
+             * @param {*} arg
+             */
+            call(arg:any):any;
+
+            /**
+             * @param {*} arg
+             */
+            fail(arg:any):any;
+
+
+            /**
+             * @param {Object|enchant.Deferred[]} arg
+             * @return {enchant.Deferred}
+             *
+             * @example
+             * // array
+             * enchant.Deferred
+             *     .parallel([
+             *         enchant.Deferred.next(function() {
+             *             return 24;
+             *         }),
+             *         enchant.Deferred.next(function() {
+             *             return 42;
+             *         })
+             *     ])
+             *     .next(function(arg) {
+             *         console.log(arg); // [ 24, 42 ]
+             *     });
+             * // object
+             * enchant.Deferred
+             *     .parallel({
+             *         foo: enchant.Deferred.next(function() {
+             *             return 24;
+             *         }),
+             *         bar: enchant.Deferred.next(function() {
+             *             return 42;
+             *         })
+             *     })
+             *     .next(function(arg) {
+             *         console.log(arg.foo); // 24
+             *         console.log(arg.bar); // 42
+             *     });
+             *
+             * @static
+             */
+            parallel(arg:any):any;
+          }
+
+}
+declare function enchant();

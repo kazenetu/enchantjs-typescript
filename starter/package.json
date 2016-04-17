@@ -1,0 +1,16 @@
+{
+	"name": "enchantjs-typescript",
+	"version": "0.1.0",
+	"description": "enchantjs-typescript",
+	"author": "kazenetu",
+	"url": "https://github.com/kazenetu/enchantjs-typescript",
+	"license": "MIT License",
+	"keywords": ["enchant.js","TypeScript"],
+	"devDependencies":{
+		"gulp": "*",
+		"gulp-typescript": "*"
+	},
+	"scripts": {
+		"build": "gulp default"
+	}
+}
