@@ -1,6 +1,6 @@
 {
 	"name": "enchantjs-typescript",
-	"version": "0.0.4",
+	"version": "0.1.0",
 	"description": "enchantjs-typescript",
 	"author": "kazenetu",
 	"url": "https://github.com/kazenetu/enchantjs-typescript",
@@ -11,7 +11,9 @@
 		"gulp-typescript": "*",
 		"gulp-concat": "*",
 		"merge2": "*",
-        "run-sequence": "*"
+        "run-sequence": "*",
+		"gulp-zip":"*",
+		"gulp-replace":"*"
 	},
     "scripts": {
         "build": "gulp default"

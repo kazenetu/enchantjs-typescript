@@ -3,6 +3,8 @@ var typescript = require('gulp-typescript');
 var merge2 = require('merge2');
 var concat = require('gulp-concat');
 var runsequence = require('run-sequence');
+var zip = require('gulp-zip');
+var replace = require('gulp-replace');
 
 //スーパークラスのビルド
 var buildBasesProject = typescript.createProject('./framework/tsconfig.json', { sortOutput: true });
@@ -46,6 +48,80 @@ gulp.task('buildExamples', function () {
                     .pipe(gulp.dest('./build/UseEnchantDtsOnly'))
             ]  
     );
+});
+
+//スターターの作成
+gulp.task('CreateStarter',['_CreateStarterZip'],function () {
+});
+
+//1.スターターの作成準備(ファイルコピー)
+gulp.task('_CreateStarterCopyFiles', function () {
+    return merge2(
+            [
+                //starter/simpleへコピー
+                gulp.src([
+                    './framework/typings/enchant.d.ts'
+                ])
+                .pipe(gulp.dest('./starter/simple/typings')),
+
+                gulp.src([
+                    './assets/resources/*.*'
+                ])
+                .pipe(gulp.dest('./starter/simple/assets/resources')),
+
+                gulp.src([
+                    './assets/js/enchant.js'
+                ])
+                .pipe(gulp.dest('./starter/simple/assets/js')),
+
+                gulp.src([
+                    './example/UseEnchantDtsOnly/**/*.ts'
+                ])
+                .pipe(gulp.dest('./starter/simple')),
+
+                //starter/use-frameworkへコピー
+                gulp.src([
+                    './typings/ets-framework.d.ts',
+                    './assets/**/*.*'
+                ],{base:'./'})
+                .pipe(gulp.dest('./starter/use-framework')),
+
+                gulp.src([
+                    './example/ImageSpriteSample/**/*.ts'
+                ])
+                .pipe(gulp.dest('./starter/use-framework'))
+            ]  
+    );
+});
+
+//2.スターターの作成準備(リソースパスの修正)
+gulp.task('_CreateStarterReplacePath',['_CreateStarterCopyFiles'], function () {
+    return gulp.src(['./starter/**/*.ts','!./starter/**/*.d.ts'],{base:'./starter'})
+        .pipe(replace('../../assets/resources/','./assets/resources/'))
+        .pipe(gulp.dest('./starter'));
+});
+
+//3.スターターの作成準備(ビルド)
+gulp.task('_CreateStarterBuild',['_CreateStarterReplacePath'], function () {
+    return merge2(
+        [
+            //TypeScriptのビルド
+            gulp.src(['./starter/simple/**/*.ts'])
+            .pipe(typescript('./starter/simple/tsconfig.json')).js
+            .pipe(gulp.dest('./starter/simple')),
+
+            gulp.src(['./starter/use-framework/**/*.ts'])
+            .pipe(typescript('./starter/use-framework/tsconfig.json')).js
+            .pipe(gulp.dest('./starter/use-framework'))
+        ]
+    );
+});
+
+//4.スターターの作成準備(zip圧縮)
+gulp.task('_CreateStarterZip',['_CreateStarterBuild'], function () {
+    return  gulp.src(['./starter/**/*'],{base:'./starter'})
+            .pipe(zip('starter.zip'))
+            .pipe(gulp.dest('./'))
 });
 
 //デフォルト
