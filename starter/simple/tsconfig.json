@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "module": "commonjs"
+        , "target": "es5"
+    }
+  ,"compileOnSave": false
+  ,"files":[
+    "./typings/enchant.d.ts"
+    ,"./main.ts"
+  ]
+}

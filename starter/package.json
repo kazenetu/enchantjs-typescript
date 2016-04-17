@@ -8,14 +8,9 @@
 	"keywords": ["enchant.js","TypeScript"],
 	"devDependencies":{
 		"gulp": "*",
-		"gulp-typescript": "*",
-		"gulp-concat": "*",
-		"merge2": "*",
-        "run-sequence": "*",
-		"gulp-zip":"*",
-		"gulp-replace":"*"
+		"gulp-typescript": "*"
 	},
-    "scripts": {
-        "build": "gulp default"
-    }
+	"scripts": {
+		"build": "gulp default"
+	}
 }
