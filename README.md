@@ -4,11 +4,14 @@ TypeScriptでenchant.jsを簡易的に使えるようにするライブラリの
 ## 注意
 現在、試行錯誤中のため、破壊的な変更が発生する可能性があります。
 
-## ビルド方法
+# ライブラリの利用方法
+[スターターキット](./starter.zip)をご利用ください。
+
+# ライブラリのビルド方法
 npm installした上で、下記を実行してください。  
    * ```npm run build ``` (または ```gulp ```) ライブラリと実装例をビルドします。
    * ```gulp buildBases``` ライブラリをビルドします。
    * ```gulp buildExamples``` 実装例をビルドします。
 
-## License
+# License
 MIT license.
