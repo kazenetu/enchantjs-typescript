@@ -5,17 +5,20 @@
 	"author": "kazenetu",
 	"url": "https://github.com/kazenetu/enchantjs-typescript",
 	"license": "MIT License",
-	"keywords": ["enchant.js","TypeScript"],
-	"devDependencies":{
+	"keywords": [
+		"enchant.js",
+		"TypeScript"
+	],
+	"devDependencies": {
 		"gulp": "*",
 		"gulp-typescript": "*",
 		"gulp-concat": "*",
 		"merge2": "*",
-        "run-sequence": "*",
-		"gulp-zip":"*",
-		"gulp-replace":"*"
+		"run-sequence": "*",
+		"gulp-zip": "*",
+		"gulp-replace": "*"
 	},
-    "scripts": {
-        "build": "gulp default"
-    }
+	"scripts": {
+		"build": "gulp default"
+	}
 }
