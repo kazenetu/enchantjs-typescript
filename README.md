@@ -9,7 +9,7 @@ TypeScriptでenchant.jsを簡易的に使えるようにするライブラリの
 [最新リリース版(starter.zip)](https://github.com/kazenetu/enchantjs-typescript/releases/latest)
 
 ## ライブラリのAPIドキュメント
-スターターキットの[docフォルダ](https://github.com/kazenetu/enchantjs-typescript/starter/doc/)をご覧ください。
+スターターキットの[docフォルダ](http://kazenetu.github.io/enchantjs-typescript/starter/doc/)をご覧ください。
 
 # ライブラリのビルド方法
 npm installした上で、下記を実行してください。  
