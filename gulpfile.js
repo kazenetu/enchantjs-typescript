@@ -6,6 +6,29 @@ var runsequence = require('run-sequence');
 var zip = require('gulp-zip');
 var replace = require('gulp-replace');
 
+//ライブラリのドキュメント作成
+var typedoc = require("gulp-typedoc");
+gulp.task('createDoc',function(){
+	return gulp
+		.src(['./framework/**/**.ts'])
+		.pipe(typedoc({ 
+			// TypeScript options (see typescript docs) 
+			module: "commonjs", 
+			target: "es5",
+			includeDeclarations: false,
+			mode:"file",
+			entryPoint :"Rf.ETS.FrameWork",
+			// Output options (see typedoc docs) 
+			out: "./starter/doc", 
+ 
+			// TypeDoc options (see typedoc docs) 
+			name: "efs-framework", 
+			ignoreCompilerErrors: false,
+			version: true,
+		}))
+	;
+});
+
 //スーパークラスのビルド
 var buildBasesProject = typescript.createProject('./framework/tsconfig.json', { sortOutput: true });
 gulp.task('_beforeBuildBases',function(){
