@@ -6,7 +6,8 @@
  * simpleフォルダ  
   「enchant.jsの型定義ファイル」を使ったサンプル
  * use-frameworkフォルダ  
-  「より快適にTypeScriptでenchant.js利用するためのライブラリ」を使うサンプル
+  「より快適にTypeScriptでenchant.js利用するためのライブラリ」を使うサンプル  
+  * ライブラリのAPIドキュメントは[docフォルダ](./doc/)をご覧ください
 
 # ビルド方法
 1. npmでビルドする方法  
