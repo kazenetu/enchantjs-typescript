@@ -3,6 +3,8 @@ class GameMain  extends Rf.ETS.FrameWork.GameMain
         private group: Rf.ETS.FrameWork.Group = null;
         private sprite: Rf.ETS.FrameWork.Sprite = null;
         private touchCharactor: Rf.ETS.FrameWork.Character = null;
+        private touchCharactorTouchPosX:number = 0;
+        private touchCharactorTouchPosY:number = 0;
 
         /**
          * 初期化イベント
@@ -60,19 +62,22 @@ class GameMain  extends Rf.ETS.FrameWork.GameMain
             this.touchCharactor.Dir = Rf.ETS.FrameWork.Direction.Up;
             this.touchCharactor.x = 32;
             this.touchCharactor.y = 32;
-            this.touchCharactor.originX = 16;
-            this.touchCharactor.originY = 16;
+            this.touchCharactor.originX = 16*2;
+            this.touchCharactor.originY = 16*2;
             this.touchCharactor.scale(2.0,2.0);
             this.touchCharactor.maxWaitCount = 3;
             this.touchCharactor.addEventListener(enchant.Event.TOUCH_START,(e:enchant.Event)=>{
                 //タッチ開始時は前を向いて、アニメーションを停止させる
                 this.touchCharactor.Dir = Rf.ETS.FrameWork.Direction.Down;
                 this.touchCharactor.SuspendAnime();
+
+                this.touchCharactorTouchPosX = this.touchCharactor.x - e.x;
+                this.touchCharactorTouchPosY = this.touchCharactor.y - e.y;
             });
             this.touchCharactor.addEventListener(enchant.Event.TOUCH_MOVE,(e:enchant.Event)=>{
                 //タッチ中はその位置にキャラクタを移動させる
-                this.touchCharactor.x = e.x;
-                this.touchCharactor.y = e.y;
+                this.touchCharactor.x = e.x + this.touchCharactorTouchPosX;
+                this.touchCharactor.y = e.y + this.touchCharactorTouchPosY;
             });
             this.touchCharactor.addEventListener(enchant.Event.TOUCH_END,(e:enchant.Event)=>{
                 //タッチ終了時は後ろを向いて、アニメーションを再開させる
