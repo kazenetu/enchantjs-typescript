@@ -51,20 +51,26 @@ game.onload = function() {
     touchCharactor.image = game.assets['../../assets/resources/chara.png'];
     touchCharactor.x = 32;
     touchCharactor.y = 32;
-    touchCharactor.originX = 16;
-    touchCharactor.originY = 16;
+    touchCharactor.originX = 16 * 2;
+    touchCharactor.originY = 16 * 2;
     touchCharactor.frame = charaIndex*2 + 26 * dir;
     touchCharactor.scale(2.0,2.0);
     mainPanel.addChild(touchCharactor);
+    var touchCharactorTouchPosX:number = 0;
+    var touchCharactorTouchPosY:number = 0;
     touchCharactor.addEventListener(enchant.Event.TOUCH_START,(e:enchant.Event)=>{
         //タッチ開始時は前を向いて、アニメーションを停止させる
         dir = 2;
+        touchCharactor.frame = charaIndex*2 + 26 * dir;
         isAnime = false;
+
+        touchCharactorTouchPosX = touchCharactor.x - e.x;
+        touchCharactorTouchPosY = touchCharactor.y - e.y;
     });
     touchCharactor.addEventListener(enchant.Event.TOUCH_MOVE,(e:enchant.Event)=>{
         //タッチ中はその位置にキャラクタを移動させる
-        touchCharactor.x = e.x;
-        touchCharactor.y = e.y;
+        touchCharactor.x = e.x + touchCharactorTouchPosX;
+        touchCharactor.y = e.y + touchCharactorTouchPosY;
     });
     touchCharactor.addEventListener(enchant.Event.TOUCH_END,(e:enchant.Event)=>{
         //タッチ終了時は後ろを向いて、アニメーションを再開させる
