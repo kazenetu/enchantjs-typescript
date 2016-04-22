@@ -1,5 +1,5 @@
-function createMain(gameMainClass){
-    $(function () {
+function createMain(gameMainClass) {
+    function onLoaded() {
         //指定されたゲームメインクラスのインスタンスを作成
         var gameMainInstance = new gameMainClass();
 
@@ -20,17 +20,17 @@ function createMain(gameMainClass){
         };
 
         //回転イベント
-        $(window).on("resize", function (event) {
+        window.addEventListener("resize", function (event) {
             orientationChange();
         });
-        $(window).on("orientationchange", function (event) {
+        window.addEventListener("orientationchange", function (event) {
             orientationChange();
         });
 
         //余白部分をドラッグすることによるスクロールを無効にする
-        $("#base").on("touchstart", function (event) {
-            if(event.target.id === "base"){
-                event.preventDefault(); 
+        document.getElementById("base").addEventListener("touchstart", function (event) {
+            if (event.target.id === "base") {
+                event.preventDefault();
             }
         });
 
@@ -41,7 +41,9 @@ function createMain(gameMainClass){
         function _resetScreen(gameWidth, gameHeight) {
 
             //ベースの幅を画面いっぱいに広げる
-            $("#base").width(window.innerWidth).height(window.innerHeight);
+            var base = document.getElementById("base");
+            base.style.width = window.innerWidth + "px";
+            base.style.height = window.innerHeight + "px";
 
             //幅、高さのスケールを計算
             var scaleWidth = window.innerWidth / gameWidth;
@@ -62,30 +64,43 @@ function createMain(gameMainClass){
             var height = gameHeight * scale;
 
             //div enchant-stageを取得
-            var stage = $("#enchant-stage");
+            var stage = document.getElementById("enchant-stage");
 
             //div enchant-stage配下のdiv（その配下にcanvasが格納されている）に
             //スケールを設定
-            var transformKey = "-" + enchant.ENV.VENDOR_PREFIX + "-transform";
-            stage.children("div").css(transformKey, "scale(" + scale + ")");
+            stage.children[stage.childElementCount - 1].style.transform = "scale(" + scale + ")";
 
             //enchantjsの画面を中央に寄せる
             var left, top;
-            if (orientation == "portrait") {
+            if (orientation === "portrait") {
                 top = (window.innerHeight - height) * 0.5;
                 left = 0;
             } else {
                 top = 0;
                 left = (window.innerWidth - width) * 0.5;
             }
-            stage.height(height).width(width);
-            stage.css({ "position": "absolute", "left": left + "px", "top": top + "px", "background-color": "white" });
+            stage.style.height = height;
+            stage.style.width = width;
+            stage.style.position = "absolute";
+            stage.style.left = left + "px";
+            stage.style.top = top + "px";
+            stage.style.backgroundColor = "white";
 
             //スクロール位置を0,0に設定
-            $(window).scrollLeft(0).scrollTop(0);
+            window.screenTop = 0;
+            window.screenLeft = 0;
 
             //enchant.Coreへの反映情報として連想配列を返す
             return { "scale": scale, "left": left, "top": top };
         }
-    });
+    }
+
+    // DOMContentLoadedがすでに完了していないか確認する
+    if (document.readyState !== 'loading') {
+        onLoaded();
+    } else {
+        document.addEventListener('DOMContentLoaded', onLoaded);
+    }
 }
+
+
