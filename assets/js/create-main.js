@@ -87,8 +87,7 @@ function createMain(gameMainClass) {
             stage.style.backgroundColor = "white";
 
             //スクロール位置を0,0に設定
-            window.screenTop = 0;
-            window.screenLeft = 0;
+            window.scrollTo(0,0);
 
             //enchant.Coreへの反映情報として連想配列を返す
             return { "scale": scale, "left": left, "top": top };
