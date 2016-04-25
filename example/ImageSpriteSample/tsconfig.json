@@ -5,7 +5,7 @@
     }
   ,"compileOnSave": false
   ,"files":[
-    "../typings/ets-framework.d.ts"
-    ,"./ImageSpriteSample/main.ts"
+    "../../typings/ets-framework.d.ts"
+    ,"./main.ts"
   ]
 }
