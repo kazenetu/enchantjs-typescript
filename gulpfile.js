@@ -63,7 +63,7 @@ gulp.task('buildExamples', function () {
     return merge2(
             [
                 gulp.src(['./example/ImageSpriteSample/*.ts','./typings/ets-framework.d.ts'])
-                    .pipe(typescript('./example/tsconfig.json')).js
+                    .pipe(typescript('./example/ImageSpriteSample/tsconfig.json')).js
                     .pipe(gulp.dest('./build/ImageSpriteSample')),
 
                 gulp.src(['./example/UseEnchantDtsOnly/*.ts','./framework/typings/enchant.d.ts'])
