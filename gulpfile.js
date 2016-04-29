@@ -48,14 +48,15 @@ gulp.task('_beforeBuildBases',function(){
     //dts
     result.dts
     .pipe(concat('ets-framework.d.ts'))
-    .pipe(gulp.dest('./build'))
+    .pipe(gulp.dest('./temp'))
     ];
 });
 
 gulp.task('buildBases',['_beforeBuildBases'], function () {
-    return gulp.src(['./framework/typings/*.d.ts','./build/ets-framework.d.ts'])
+    return gulp.src(['./framework/typings/*.d.ts','./temp/ets-framework.d.ts'])
             .pipe(concat('ets-framework.d.ts'))
-            .pipe(gulp.dest('./typings'));
+            .pipe(gulp.dest('./typings'))
+            .pipe(gulp.dest('./build'));
 });
 
 //実装例のビルド
