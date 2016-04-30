@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>README</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <style>
+      body{
+        font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      }
+    </style>
+  </head>
+  <body><h1 id="-">はじめに</h1>
+<p>型定義ファイルや本ライブラリを利用する場合、<br>スターターキット(本フォルダ)をベースにはじめることを推奨します。  </p>
+<h1 id="-">サンプル</h1>
+<ul>
+<li><a href="./simple/index.html">simpleフォルダ</a><br>「enchant.jsの型定義ファイル」を使ったサンプル</li>
+<li><a href="./use-framework/index.html">use-frameworkフォルダ</a><br>「より快適にTypeScriptでenchant.js利用するためのライブラリ」を使うサンプル  <ul>
+<li>ライブラリのAPIドキュメントは<a href="./doc/index.html">docフォルダ</a>をご覧ください</li>
+</ul>
+</li>
+</ul>
+<h1 id="-">ビルド方法</h1>
+<ol>
+<li><p>npmでビルドする方法<br>npm installした上で、下記を実行してください。  </p>
+<ul>
+<li><code>npm run build</code> (または <code>gulp</code>) すべてのサンプルををビルドします。</li>
+<li><code>gulp buildSimple</code> simpleフォルダのサンプルをビルドします。</li>
+<li><code>gulp buildUseFramework</code> use-frameworkフォルダのサンプルをビルドします。</li>
+</ul>
+</li>
+<li><p>VisualStudioでビルドする場合</p>
+<ol>
+<li>VisualStudioでTypeScriptプロジェクトを作成してください。</li>
+<li>スターターキット(本フォルダ)のサンプルフォルダをTypeScriptプロジェクトのフォルダにコピーします。</li>
+<li>VisualStudioのソリューションエクスプローラーで「プロジェクトに含める」を選択し本フォルダをプロジェクトに含めてください。</li>
+<li>TypeScriptプロジェクトのビルドをします。</li>
+</ol>
+</li>
+</ol>
+<h1 id="license">License</h1>
+<p>MIT license.</p>
+
+  </body>
+</html>
