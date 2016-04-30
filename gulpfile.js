@@ -5,6 +5,8 @@ var concat = require('gulp-concat');
 var runsequence = require('run-sequence');
 var zip = require('gulp-zip');
 var replace = require('gulp-replace');
+var markdown = require('gulp-markdown');
+var pug = require('gulp-pug');
 
 //ライブラリのドキュメント作成
 var typedoc = require("gulp-typedoc");
@@ -141,8 +143,24 @@ gulp.task('_CreateStarterBuild',['_CreateStarterReplacePath'], function () {
     );
 });
 
-//4.スターターの作成準備(zip圧縮)
-gulp.task('_CreateStarterZip',['_CreateStarterBuild'], function () {
+//4.readme.mdをhtmlタグに変換
+gulp.task('_CreateStarterConvertMD',['_CreateStarterBuild'], function () {
+    return gulp.src('./starter/README.md')
+        .pipe(markdown())
+        .pipe(gulp.dest('./temp'));
+});
+
+//5.変換したhtmlタグをベースにHTMLを作成
+gulp.task('_CreateStarterCreateHTML',['_CreateStarterConvertMD'], function () {
+  return gulp.src('./pug-files/*.pug')
+    .pipe(pug({
+      pretty: true
+    }))
+    .pipe(gulp.dest('./starter'));
+});
+
+//6.スターターの作成準備(zip圧縮)
+gulp.task('_CreateStarterZip',['_CreateStarterCreateHTML'], function () {
     return  gulp.src(['./starter/**/*'],{base:'./starter'})
             .pipe(zip('starter.zip'))
             .pipe(gulp.dest('./'))
