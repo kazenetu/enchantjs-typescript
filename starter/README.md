@@ -3,11 +3,11 @@
 スターターキット(本フォルダ)をベースにはじめることを推奨します。  
 
 # サンプル
- * simpleフォルダ  
+ * [simpleフォルダ](./simple/index.html)  
   「enchant.jsの型定義ファイル」を使ったサンプル
- * use-frameworkフォルダ  
+ * [use-frameworkフォルダ](./use-framework/index.html)  
   「より快適にTypeScriptでenchant.js利用するためのライブラリ」を使うサンプル  
-  * ライブラリのAPIドキュメントはdocフォルダをご覧ください
+  * ライブラリのAPIドキュメントは[docフォルダ](./doc/index.html)をご覧ください
 
 # ビルド方法
 1. npmでビルドする方法  
