@@ -69,6 +69,10 @@ gulp.task('buildExamples', function () {
                     .pipe(typescript('./example/ImageSpriteSample/tsconfig.json')).js
                     .pipe(gulp.dest('./build/ImageSpriteSample')),
 
+                gulp.src(['./example/LoginSample/*.ts','./typings/ets-framework.d.ts'])
+                    .pipe(typescript('./example/LoginSample/tsconfig.json')).js
+                    .pipe(gulp.dest('./build/LoginSample')),
+
                 gulp.src(['./example/UseEnchantDtsOnly/*.ts','./framework/typings/enchant.d.ts'])
                     .pipe(typescript('./example/UseEnchantDtsOnly/tsconfig.json')).js
                     .pipe(gulp.dest('./build/UseEnchantDtsOnly'))
