@@ -19,7 +19,8 @@
 		"gulp-replace": "*",
 		"gulp-typedoc": "*",
 		"gulp-markdown": "*",
-		"gulp-pug":"*"
+		"gulp-pug":"*",
+		"gulp-webserver": "*"
 	},
 	"scripts": {
 		"build": "gulp default"
