@@ -114,8 +114,8 @@ var Rf;
                      */
                     set: function (value) {
                         if (this.fileName !== value) {
-                            this.image = enchant.Core.instance.assets[this.fileName];
                             this.fileName = value;
+                            this.image = enchant.Core.instance.assets[this.fileName];
                         }
                     },
                     enumerable: true,

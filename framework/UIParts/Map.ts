@@ -36,8 +36,8 @@ namespace Rf.ETS.FrameWork {
         {
           if(this.fileName !== value)
           {
-            this.image = enchant.Core.instance.assets[this.fileName];
             this.fileName = value;
+            this.image = enchant.Core.instance.assets[this.fileName];
           }
         }
 
