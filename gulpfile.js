@@ -7,6 +7,7 @@ var zip = require('gulp-zip');
 var replace = require('gulp-replace');
 var markdown = require('gulp-markdown');
 var pug = require('gulp-pug');
+var webserver = require('gulp-webserver');
 
 //ライブラリのドキュメント作成
 var typedoc = require("gulp-typedoc");
@@ -72,6 +73,10 @@ gulp.task('buildExamples', function () {
                 gulp.src(['./example/LoginSample/*.ts','./typings/ets-framework.d.ts'])
                     .pipe(typescript('./example/LoginSample/tsconfig.json')).js
                     .pipe(gulp.dest('./build/LoginSample')),
+
+                gulp.src(['./example/2DRPGMapSample/*.ts','./typings/ets-framework.d.ts'])
+                    .pipe(typescript('./example/2DRPGMapSample/tsconfig.json')).js
+                    .pipe(gulp.dest('./build/2DRPGMapSample')),
 
                 gulp.src(['./example/UseEnchantDtsOnly/*.ts','./framework/typings/enchant.d.ts'])
                     .pipe(typescript('./example/UseEnchantDtsOnly/tsconfig.json')).js
@@ -175,3 +180,6 @@ gulp.task('default',['buildBases'], function () {
     runsequence('buildExamples');
 });
 
+gulp.task('startServer', function() {
+  webStream = gulp.src('./').pipe(webserver());
+});
