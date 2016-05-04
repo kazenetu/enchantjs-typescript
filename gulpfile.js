@@ -114,17 +114,47 @@ gulp.task('_CreateStarterCopyFiles', function () {
                 ])
                 .pipe(gulp.dest('./starter/simple')),
 
-                //starter/use-frameworkへコピー
+                //starter/use-framework/ImageSpriteSampleへコピー
                 gulp.src([
                     './typings/ets-framework.d.ts',
                     './assets/**/*.*'
                 ],{base:'./'})
-                .pipe(gulp.dest('./starter/use-framework')),
+                .pipe(gulp.dest('./starter/use-framework/ImageSpriteSample')),
 
                 gulp.src([
                     './example/ImageSpriteSample/**/*.ts'
                 ])
-                .pipe(gulp.dest('./starter/use-framework'))
+                .pipe(gulp.dest('./starter/use-framework/ImageSpriteSample')),
+
+                //starter/use-framework/LoginSampleへコピー
+                gulp.src([
+                    './typings/ets-framework.d.ts'
+                ],{base:'./'})
+                .pipe(gulp.dest('./starter/use-framework/LoginSample')),
+                gulp.src([
+                    './example/LoginSample/assets/**/*.*'
+                ],{base:'./example/LoginSample/'})
+                .pipe(gulp.dest('./starter/use-framework/LoginSample')),
+
+                gulp.src([
+                    './example/LoginSample/**/*.ts'
+                ])
+                .pipe(gulp.dest('./starter/use-framework/LoginSample')),
+                
+                //starter/use-framework/2DRPGMapSampleへコピー
+                gulp.src([
+                    './typings/ets-framework.d.ts'
+                ],{base:'./'})
+                .pipe(gulp.dest('./starter/use-framework/2DRPGMapSample')),
+                gulp.src([
+                    './example/2DRPGMapSample/assets/**/*.*'
+                ],{base:'./example/2DRPGMapSample'})
+                .pipe(gulp.dest('./starter/use-framework/2DRPGMapSample')),
+
+                gulp.src([
+                    './example/2DRPGMapSample/**/*.ts'
+                ])
+                .pipe(gulp.dest('./starter/use-framework/2DRPGMapSample'))
             ]  
     );
 });
@@ -145,9 +175,17 @@ gulp.task('_CreateStarterBuild',['_CreateStarterReplacePath'], function () {
             .pipe(typescript('./starter/simple/tsconfig.json')).js
             .pipe(gulp.dest('./starter/simple')),
 
-            gulp.src(['./starter/use-framework/**/*.ts'])
-            .pipe(typescript('./starter/use-framework/tsconfig.json')).js
-            .pipe(gulp.dest('./starter/use-framework'))
+            gulp.src(['./starter/use-framework/ImageSpriteSample/*.ts'])
+            .pipe(typescript('./starter/use-framework/ImageSpriteSample/tsconfig.json')).js
+            .pipe(gulp.dest('./starter/use-framework/ImageSpriteSample')),
+
+            gulp.src(['./starter/use-framework/LoginSample/*.ts'])
+            .pipe(typescript('./starter/use-framework/LoginSample/tsconfig.json')).js
+            .pipe(gulp.dest('./starter/use-framework/LoginSample')),
+
+            gulp.src(['./starter/use-framework/2DRPGMapSample/*.ts'])
+            .pipe(typescript('./starter/use-framework/2DRPGMapSample/tsconfig.json')).js
+            .pipe(gulp.dest('./starter/use-framework/2DRPGMapSample'))
         ]
     );
 });
