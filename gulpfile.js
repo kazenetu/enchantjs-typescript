@@ -128,7 +128,8 @@ gulp.task('_CreateStarterCopyFiles', function () {
 
                 //starter/use-framework/LoginSampleへコピー
                 gulp.src([
-                    './typings/ets-framework.d.ts'
+                    './typings/ets-framework.d.ts',
+                    './assets/js/*.*'
                 ],{base:'./'})
                 .pipe(gulp.dest('./starter/use-framework/LoginSample')),
                 gulp.src([
@@ -143,7 +144,8 @@ gulp.task('_CreateStarterCopyFiles', function () {
                 
                 //starter/use-framework/2DRPGMapSampleへコピー
                 gulp.src([
-                    './typings/ets-framework.d.ts'
+                    './typings/ets-framework.d.ts',
+                    './assets/js/*.*'
                 ],{base:'./'})
                 .pipe(gulp.dest('./starter/use-framework/2DRPGMapSample')),
                 gulp.src([
@@ -175,15 +177,15 @@ gulp.task('_CreateStarterBuild',['_CreateStarterReplacePath'], function () {
             .pipe(typescript('./starter/simple/tsconfig.json')).js
             .pipe(gulp.dest('./starter/simple')),
 
-            gulp.src(['./starter/use-framework/ImageSpriteSample/*.ts'])
+            gulp.src(['./starter/use-framework/ImageSpriteSample/**/*.ts'])
             .pipe(typescript('./starter/use-framework/ImageSpriteSample/tsconfig.json')).js
             .pipe(gulp.dest('./starter/use-framework/ImageSpriteSample')),
 
-            gulp.src(['./starter/use-framework/LoginSample/*.ts'])
+            gulp.src(['./starter/use-framework/LoginSample/**/*.ts'])
             .pipe(typescript('./starter/use-framework/LoginSample/tsconfig.json')).js
             .pipe(gulp.dest('./starter/use-framework/LoginSample')),
 
-            gulp.src(['./starter/use-framework/2DRPGMapSample/*.ts'])
+            gulp.src(['./starter/use-framework/2DRPGMapSample/**/*.ts'])
             .pipe(typescript('./starter/use-framework/2DRPGMapSample/tsconfig.json')).js
             .pipe(gulp.dest('./starter/use-framework/2DRPGMapSample'))
         ]
