@@ -5,8 +5,16 @@
 # サンプル
  * [simpleフォルダ](./simple/index.html)  
   「enchant.jsの型定義ファイル」を使ったサンプル
- * [use-frameworkフォルダ](./use-framework/index.html)  
-  「より快適にTypeScriptでenchant.js利用するためのライブラリ」を使うサンプル  
+ * use-frameworkフォルダ  
+  「より快適にTypeScriptでenchant.js利用するためのライブラリ」を使うサンプル
+  * [ImageSpriteSample](./use-framework/ImageSpriteSample/index.html)
+    親子関係による表示例とタッチイベントに対応した実装例
+  * [LoginSample](./use-framework/LoginSample/index.html)
+    キャラクタ選択の実装例
+  * [2DRPGMapSample](./use-framework/2DRPGMapSample/index.html)
+    マップ表示の実装例
+
+# APIドキュメント
   * ライブラリのAPIドキュメントは[docフォルダ](./doc/index.html)をご覧ください
 
 # ビルド方法
