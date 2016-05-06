@@ -78,6 +78,10 @@ gulp.task('buildExamples', function () {
                     .pipe(typescript('./example/2DRPGMapSample/tsconfig.json')).js
                     .pipe(gulp.dest('./build/2DRPGMapSample')),
 
+                gulp.src(['./example/template/*.ts','./typings/ets-framework.d.ts'])
+                    .pipe(typescript('./example/template/tsconfig.json')).js
+                    .pipe(gulp.dest('./build/template')),
+
                 gulp.src(['./example/UseEnchantDtsOnly/*.ts','./framework/typings/enchant.d.ts'])
                     .pipe(typescript('./example/UseEnchantDtsOnly/tsconfig.json')).js
                     .pipe(gulp.dest('./build/UseEnchantDtsOnly'))
@@ -156,7 +160,19 @@ gulp.task('_CreateStarterCopyFiles', function () {
                 gulp.src([
                     './example/2DRPGMapSample/**/*.ts'
                 ])
-                .pipe(gulp.dest('./starter/use-framework/2DRPGMapSample'))
+                .pipe(gulp.dest('./starter/use-framework/2DRPGMapSample')),
+                
+                //starter/use-framework/templateへコピー
+                gulp.src([
+                    './typings/ets-framework.d.ts',
+                    './assets/js/*.*'
+                ],{base:'./'})
+                .pipe(gulp.dest('./starter/use-framework/template')),
+
+                gulp.src([
+                    './example/template/**/*.ts'
+                ])
+                .pipe(gulp.dest('./starter/use-framework/template'))
             ]  
     );
 });
@@ -187,7 +203,11 @@ gulp.task('_CreateStarterBuild',['_CreateStarterReplacePath'], function () {
 
             gulp.src(['./starter/use-framework/2DRPGMapSample/**/*.ts'])
             .pipe(typescript('./starter/use-framework/2DRPGMapSample/tsconfig.json')).js
-            .pipe(gulp.dest('./starter/use-framework/2DRPGMapSample'))
+            .pipe(gulp.dest('./starter/use-framework/2DRPGMapSample')),
+
+            gulp.src(['./starter/use-framework/template/**/*.ts'])
+            .pipe(typescript('./starter/use-framework/template/tsconfig.json')).js
+            .pipe(gulp.dest('./starter/use-framework/template'))
         ]
     );
 });

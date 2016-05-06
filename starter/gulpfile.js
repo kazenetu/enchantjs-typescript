@@ -11,7 +11,8 @@ gulp.task('buildSimple', function () {
 gulp.task('buildUseFramework',
   ['buildUseFrameworkImageSpriteSample',
     'buildUseFrameworkLoginSample',
-    'buildUseFramework2DRPGMapSample'
+    'buildUseFramework2DRPGMapSample',
+    'buildUseFrameworkTemplate'
   ], function () {
   });
 gulp.task('buildUseFrameworkImageSpriteSample', function () {
@@ -28,6 +29,11 @@ gulp.task('buildUseFramework2DRPGMapSample', function () {
   return gulp.src(['./use-framework/2DRPGMapSample/**/*.ts'])
     .pipe(typescript('./use-framework/2DRPGMapSample/tsconfig.json')).js
     .pipe(gulp.dest('./use-framework/2DRPGMapSample'));
+});
+gulp.task('buildUseFrameworkTemplate', function () {
+  return gulp.src(['./use-framework/template/**/*.ts'])
+    .pipe(typescript('./use-framework/template/tsconfig.json')).js
+    .pipe(gulp.dest('./use-framework/template'));
 });
 
 //デフォルト
