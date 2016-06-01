@@ -64,10 +64,10 @@
 			<div class="tsd-panel tsd-typography">
 				<h1 id="enchantjs-typescript">enchantjs-typescript</h1>
 				<p>TypeScriptでenchant.jsを簡易的に使えるようにするライブラリの改良版</p>
-				<h2 id="-">注意</h2>
-				<p>現在、試行錯誤中のため、破壊的な変更が発生する可能性があります。</p>
 				<h1 id="-">ライブラリの利用方法</h1>
 				<p>スターターキットをご利用ください。<br><a href="https://github.com/kazenetu/enchantjs-typescript/releases/latest">最新リリース版(starter.zip)</a></p>
+				<h2 id="-api-">ライブラリのAPIドキュメント</h2>
+				<p>スターターキットの<a href="http://kazenetu.github.io/enchantjs-typescript/starter/doc/">docフォルダ</a>をご覧ください。</p>
 				<h1 id="-">ライブラリのビルド方法</h1>
 				<p>npm installした上で、下記を実行してください。  </p>
 				<ul>
@@ -75,6 +75,49 @@
 					<li><code>gulp buildBases</code> ライブラリをビルドします。</li>
 					<li><code>gulp buildExamples</code> 実装例をビルドします。</li>
 				</ul>
+				<h1 id="enchant-js-ets-framework-d-ts-">enchant.jsとets-framework.d.tsの比較</h1>
+				<table>
+					<thead>
+						<tr>
+							<th style="text-align:left">enchant.jsのクラス名</th>
+							<th style="text-align:left">ets-framework.d.ts</th>
+							<th style="text-align:left">備考</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="text-align:left">なし</td>
+							<td style="text-align:left">Rf.ETS.FrameWork.GameMain</td>
+							<td style="text-align:left">ライブラリのエントリークラスです</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">enchant.Group</td>
+							<td style="text-align:left">Rf.ETS.FrameWork.Group</td>
+							<td style="text-align:left"></td>
+						</tr>
+						<tr>
+							<td style="text-align:left">enchant.Label</td>
+							<td style="text-align:left">Rf.ETS.FrameWork.Label</td>
+							<td style="text-align:left"></td>
+						</tr>
+						<tr>
+							<td style="text-align:left">enchant.Sprite</td>
+							<td style="text-align:left">Rf.ETS.FrameWork.NoImageSprite</td>
+							<td style="text-align:left">イメージなしバージョンです</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">enchant.Sprite</td>
+							<td style="text-align:left">Rf.ETS.FrameWork.Sprite</td>
+							<td style="text-align:left">FileName(value:string)でassets名を指定することでイメージを設定できます</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">enchant.Map</td>
+							<td style="text-align:left">Rf.ETS.FrameWork.Map</td>
+							<td style="text-align:left">FileName(value:string)でassets名を指定することでイメージを設定できます<br>LoadDataメソッドでマップデータ※を読み込みます</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>※Mapデータは<a href="https://github.com/wise9/enchantMapEditor">enchantMapEditor</a>で作成したデータを利用します。</p>
 				<h1 id="license">License</h1>
 				<p>MIT license.</p>
 			</div>

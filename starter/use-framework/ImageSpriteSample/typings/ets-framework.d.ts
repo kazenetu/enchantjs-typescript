@@ -1288,10 +1288,10 @@ declare namespace Rf.ETS.FrameWork {
         charaIndex: number;
         Dir: Direction;
         maxWaitCount: number;
-        private dir;
-        private waitCount;
-        private anime;
-        private isRunAnime;
+        protected dir: Direction;
+        protected waitCount: number;
+        protected anime: number;
+        protected isRunAnime: boolean;
         /**
          * コンストラクタ
          * @method
@@ -1333,14 +1333,14 @@ declare namespace Rf.ETS.FrameWork {
          * @name UIParts.Character#SetAnime
          * @return {boolean} フレーム更新実施の可否
          */
-        private SetAnime();
+        protected SetAnime(): boolean;
         /**
          * フレームの更新
          * @method
          * @name UIParts.Character#SetFrame
          * @return {boolean} フレーム更新実施の可否
          */
-        private SetFrame();
+        protected SetFrame(): void;
     }
 }
 

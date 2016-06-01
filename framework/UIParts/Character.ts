@@ -27,10 +27,10 @@ namespace Rf.ETS.FrameWork {
         }
         public maxWaitCount:number = 1;
 
-        private dir: Direction = Direction.Down;
-        private waitCount: number = 0;
-        private anime: number = 0;
-        private isRunAnime:boolean = true;
+        protected dir: Direction = Direction.Down;
+        protected waitCount: number = 0;
+        protected anime: number = 0;
+        protected isRunAnime:boolean = true;
 
         /**
          * コンストラクタ
@@ -94,7 +94,7 @@ namespace Rf.ETS.FrameWork {
          * @name UIParts.Character#SetAnime
          * @return {boolean} フレーム更新実施の可否
          */
-        private SetAnime():boolean 
+        protected SetAnime():boolean 
         {
             if(this.isRunAnime === false){
                 return false;
@@ -126,7 +126,7 @@ namespace Rf.ETS.FrameWork {
          * @name UIParts.Character#SetFrame
          * @return {boolean} フレーム更新実施の可否
          */
-        private SetFrame():void{
+        protected SetFrame():void{
             this.frame = this.charaIndex * 2 + this.dir * 26;
             if (this.anime >= 2) {
                 this.frame += 1;
