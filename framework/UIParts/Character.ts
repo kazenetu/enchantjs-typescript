@@ -127,7 +127,7 @@ namespace Rf.ETS.FrameWork {
          * @return {boolean} フレーム更新実施の可否
          */
         protected SetFrame():void{
-            this.frame = this.charaIndex * 2 + this.dir * 26;
+            this.frame = this.charaIndex * 2 + this.dir * Math.floor(this.image.width/this.width);
             if (this.anime >= 2) {
                 this.frame += 1;
             }
