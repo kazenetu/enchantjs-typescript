@@ -985,6 +985,8 @@ declare module enchant {
          */
         constructor(width:number, height:number);
 
+        width:number;
+        height:number;
         context:any;
 
         /**
@@ -1286,12 +1288,46 @@ declare namespace Rf.ETS.FrameWork {
      */
     class Character extends Rf.ETS.FrameWork.Sprite implements Rf.ETS.FrameWork.IRunnable {
         charaIndex: number;
+        /**
+         * キャラクタの向き
+         * @prop
+         * @name UIParts.Character#Character
+         */
         Dir: Direction;
+        /**
+         * アニメーション間隔(Runメソッド呼び出し)
+         */
         maxWaitCount: number;
+        /**
+         * Dirプロパティに対応したY位置の配列
+         * ※必ず4要素が必要
+         * 初期値：[0,1,2,3]
+         * @prop
+         * @name UIParts.Character#Character
+         */
+        DirIndexs: Array<number>;
+        /**
+         * アニメーションパターン
+         * 初期値：[0,1]
+         * @prop
+         * @name UIParts.Character#Character
+         */
+        AnimePattern: Array<number>;
+        /**
+         * アニメーションの幅
+         * 初期値：2
+         * @prop
+         * @name UIParts.Character#Character
+         */
+        AnimeWidth: number;
         protected dir: Direction;
+        protected dirIndexs: Array<number>;
+        protected animeIndex: number;
+        protected animePattern: Array<number>;
+        protected animeTipWidth: number;
         protected waitCount: number;
-        protected anime: number;
         protected isRunAnime: boolean;
+        protected imageTipWidth: number;
         /**
          * コンストラクタ
          * @method
