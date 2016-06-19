@@ -21,16 +21,62 @@ namespace Rf.ETS.FrameWork {
     {
         public charaIndex: number = 0;
         
+        /**
+         * キャラクタの向き
+         * @prop
+         * @name UIParts.Character#Character
+         */
         public set Dir(value: Direction) {
             this.dir = value;
             this.SetFrame();
         }
-        public maxWaitCount:number = 1;
+
+        /**
+         * アニメーション間隔(Runメソッド呼び出し)
+         */
+        public maxWaitCount:number = 4;
+
+        /**
+         * Dirプロパティに対応したY位置の配列
+         * ※必ず4要素が必要
+         * 初期値：[0,1,2,3]
+         * @prop
+         * @name UIParts.Character#Character
+         */
+        public set DirIndexs(value:Array<number>){
+            if(value.length !== 4){
+                this.dirIndexs = value;
+            }
+        }
+
+        /**
+         * アニメーションパターン
+         * 初期値：[0,1]
+         * @prop
+         * @name UIParts.Character#Character
+         */
+        public set AnimePattern(value:Array<number>){
+            this.animePattern = value;
+        }
+
+        /**
+         * アニメーションの幅
+         * 初期値：2
+         * @prop
+         * @name UIParts.Character#Character
+         */
+        public set AnimeWidth(value:number){
+            this.animeTipWidth = value;
+        }
 
         protected dir: Direction = Direction.Down;
+        protected dirIndexs:Array<number> = [0,1,2,3];
+        protected animeIndex: number = 0;
+        protected animePattern:Array<number> = [0,1];
+        protected animeTipWidth: number = 2;
         protected waitCount: number = 0;
-        protected anime: number = 0;
         protected isRunAnime:boolean = true;
+        protected imageTipWidth:number = 0;
 
         /**
          * コンストラクタ
@@ -111,12 +157,13 @@ namespace Rf.ETS.FrameWork {
             }
             
             if(isUpdateFrame){
-                this.anime++;
-                if (this.anime >= 4) {
-                    this.anime = 0;
+                this.animeIndex++;
+                if (this.animeIndex >= this.animePattern.length) {
+                    this.animeIndex = 0;
                 }
                 this.waitCount = 0;
             }
+
             return isUpdateFrame;
         }
         
@@ -127,10 +174,14 @@ namespace Rf.ETS.FrameWork {
          * @return {boolean} フレーム更新実施の可否
          */
         protected SetFrame():void{
-            this.frame = this.charaIndex * 2 + this.dir * Math.floor(this.image.width/this.width);
-            if (this.anime >= 2) {
-                this.frame += 1;
+            if (this.imageTipWidth <= 0) {
+                if (this.image !== null) {
+                    this.imageTipWidth = Math.floor(this.image.width / this.width);
+                }
             }
+            this.frame = this.charaIndex * this.animeTipWidth +
+                         this.animePattern[this.animeIndex] +  
+                         this.dirIndexs[this.dir] * this.imageTipWidth;
         }
     }
 }
