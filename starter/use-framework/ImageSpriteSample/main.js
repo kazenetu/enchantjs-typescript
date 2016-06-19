@@ -64,7 +64,7 @@ var GameMain = (function (_super) {
         this.touchCharactor.originX = 16 * 2;
         this.touchCharactor.originY = 16 * 2;
         this.touchCharactor.scale(2.0, 2.0);
-        this.touchCharactor.maxWaitCount = 3;
+        this.touchCharactor.maxWaitCount = 6;
         this.touchCharactor.addEventListener(enchant.Event.TOUCH_START, function (e) {
             //タッチ開始時は前を向いて、アニメーションを停止させる
             _this.touchCharactor.Dir = Rf.ETS.FrameWork.Direction.Down;

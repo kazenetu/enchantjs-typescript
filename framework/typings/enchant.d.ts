@@ -983,6 +983,8 @@ declare module enchant {
          */
         constructor(width:number, height:number);
 
+        width:number;
+        height:number;
         context:any;
 
         /**

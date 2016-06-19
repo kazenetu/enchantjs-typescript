@@ -298,16 +298,70 @@ var Rf;
                 function Character(width, height, parent) {
                     _super.call(this, width, height, parent);
                     this.charaIndex = 0;
-                    this.maxWaitCount = 1;
+                    /**
+                     * アニメーション間隔(Runメソッド呼び出し)
+                     */
+                    this.maxWaitCount = 4;
                     this.dir = Direction.Down;
+                    this.dirIndexs = [0, 1, 2, 3];
+                    this.animeIndex = 0;
+                    this.animePattern = [0, 1];
+                    this.animeTipWidth = 2;
                     this.waitCount = 0;
-                    this.anime = 0;
                     this.isRunAnime = true;
+                    this.imageTipWidth = 0;
                 }
                 Object.defineProperty(Character.prototype, "Dir", {
+                    /**
+                     * キャラクタの向き
+                     * @prop
+                     * @name UIParts.Character#Character
+                     */
                     set: function (value) {
                         this.dir = value;
                         this.SetFrame();
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Character.prototype, "DirIndexs", {
+                    /**
+                     * Dirプロパティに対応したY位置の配列
+                     * ※必ず4要素が必要
+                     * 初期値：[0,1,2,3]
+                     * @prop
+                     * @name UIParts.Character#Character
+                     */
+                    set: function (value) {
+                        if (value.length !== 4) {
+                            this.dirIndexs = value;
+                        }
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Character.prototype, "AnimePattern", {
+                    /**
+                     * アニメーションパターン
+                     * 初期値：[0,1]
+                     * @prop
+                     * @name UIParts.Character#Character
+                     */
+                    set: function (value) {
+                        this.animePattern = value;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Character.prototype, "AnimeWidth", {
+                    /**
+                     * アニメーションの幅
+                     * 初期値：2
+                     * @prop
+                     * @name UIParts.Character#Character
+                     */
+                    set: function (value) {
+                        this.animeTipWidth = value;
                     },
                     enumerable: true,
                     configurable: true
@@ -371,9 +425,9 @@ var Rf;
                         this.waitCount++;
                     }
                     if (isUpdateFrame) {
-                        this.anime++;
-                        if (this.anime >= 4) {
-                            this.anime = 0;
+                        this.animeIndex++;
+                        if (this.animeIndex >= this.animePattern.length) {
+                            this.animeIndex = 0;
                         }
                         this.waitCount = 0;
                     }
@@ -386,10 +440,14 @@ var Rf;
                  * @return {boolean} フレーム更新実施の可否
                  */
                 Character.prototype.SetFrame = function () {
-                    this.frame = this.charaIndex * 2 + this.dir * 26;
-                    if (this.anime >= 2) {
-                        this.frame += 1;
+                    if (this.imageTipWidth <= 0) {
+                        if (this.image !== null) {
+                            this.imageTipWidth = Math.floor(this.image.width / this.width);
+                        }
                     }
+                    this.frame = this.charaIndex * this.animeTipWidth +
+                        this.animePattern[this.animeIndex] +
+                        this.dirIndexs[this.dir] * this.imageTipWidth;
                 };
                 return Character;
             }(Rf.ETS.FrameWork.Sprite));
