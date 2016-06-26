@@ -17,6 +17,7 @@
 		"run-sequence": "*",
 		"gulp-zip": "*",
 		"gulp-replace": "*",
+		"typedoc":"*",
 		"gulp-typedoc": "*",
 		"gulp-markdown": "*",
 		"gulp-pug":"*",
