@@ -10,6 +10,42 @@ var pug = require('gulp-pug');
 var webserver = require('gulp-webserver');
 
 //ライブラリのドキュメント作成
+var typedocModule = require("typedoc");
+
+typedocModule.converter.GitHubPlugin.prototype.onEndResolve = function (context) {
+    var _this = this;
+    var project = context.project;
+    var destBaseUrl = null;
+    project.files.forEach(function (sourceFile) {
+        var repository = _this.getRepository(sourceFile.fullFileName);
+        if (repository) {
+            var srcUrl = repository.getGitHubURL(sourceFile.fullFileName);
+            destBaseUrl = [
+                'https://github.com',
+                repository.gitHubUser,
+                repository.gitHubProject,
+                'blob',
+                'master',
+                'framework',
+                ''
+            ].join('/');
+            sourceFile.url = destBaseUrl+sourceFile.fileName;
+        }
+    });
+    for (var key in project.reflections) {
+        var reflection = project.reflections[key];
+        if (reflection.sources)
+            reflection.sources.forEach(function (source) {
+                if(destBaseUrl !== null){
+                    source.file.url = destBaseUrl+source.file.fileName;
+                }
+                if (source.file && source.file.url) {
+                    source.url = source.file.url + '#L' + source.line;
+                }
+            });
+    }
+};
+
 var typedoc = require("gulp-typedoc");
 gulp.task('createDoc',function(){
 	return gulp
@@ -27,7 +63,7 @@ gulp.task('createDoc',function(){
 			// TypeDoc options (see typedoc docs) 
 			name: "efs-framework", 
 			ignoreCompilerErrors: false,
-			version: true,
+			//version: false,
 		}))
 	;
 });
