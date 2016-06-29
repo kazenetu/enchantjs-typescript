@@ -129,8 +129,17 @@ gulp.task('buildExamples', function () {
 gulp.task('CreateStarter',['_CreateStarterZip'],function () {
 });
 
+//0.node_modulesフォルダの削除
+var del = require('del');
+gulp.task('_CreateStarterRemoveFiles', function () {
+return del([
+    './starter/node_modules'
+    ,'./starter/**/node_modules'
+  ]);
+});
+
 //1.スターターの作成準備(ファイルコピー)
-gulp.task('_CreateStarterCopyFiles', function () {
+gulp.task('_CreateStarterCopyFiles',['_CreateStarterRemoveFiles'], function () {
     return merge2(
             [
                 //starter/simpleへコピー
