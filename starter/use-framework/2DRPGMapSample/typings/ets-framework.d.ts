@@ -1338,6 +1338,10 @@ declare namespace Rf.ETS.FrameWork {
          */
         constructor(width: number, height: number, parent: enchant.Group);
         /**
+         * 初期化処理
+         */
+        Init(): void;
+        /**
          * 実行処理実行
          * @method
          * @name UIParts.Character#Run
