@@ -367,6 +367,12 @@ var Rf;
                     configurable: true
                 });
                 /**
+                 * 初期化処理
+                 */
+                Character.prototype.Init = function () {
+                    this.SetFrame();
+                };
+                /**
                  * 実行処理実行
                  * @method
                  * @name UIParts.Character#Run

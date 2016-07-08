@@ -92,6 +92,14 @@ namespace Rf.ETS.FrameWork {
         }
 
         /**
+         * 初期化処理
+         */
+        public Init():void
+        {
+            this.SetFrame();
+        }
+
+        /**
          * 実行処理実行
          * @method
          * @name UIParts.Character#Run
