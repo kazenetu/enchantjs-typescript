@@ -1,3 +1,10 @@
+/* 
+ * enchantjs-typescript 1.0.8
+ * https://github.com/kazenetu/enchantjs-typescript
+ * MIT License
+ * 
+ * Copyright (C) 2016 kazenetu
+ */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }

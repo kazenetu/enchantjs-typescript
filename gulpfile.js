@@ -69,6 +69,19 @@ gulp.task('createDoc',function(){
 });
 
 //スーパークラスのビルド
+var header = require('gulp-header');
+var pkg = require('./package.json');  
+var banner = [
+  "/* ",
+  " * <%= pkg.name %> <%= pkg.version %>",
+  " * <%= pkg.url %>",
+  " * <%= pkg.license %>",
+  " * ",
+  " * Copyright (C) 2016 <%= pkg.author %>",
+  " */",
+  "",  
+].join('\n');
+
 var buildBasesProject = typescript.createProject('./framework/tsconfig.json', { sortOutput: true });
 gulp.task('_beforeBuildBases',function(){
 	var result = gulp.src(["./framework/**/*.ts"])
@@ -81,6 +94,9 @@ gulp.task('_beforeBuildBases',function(){
     ))
     //result.js
     .pipe(concat('ets-framework.js'))
+    .pipe(header(banner, {
+      pkg: pkg,
+    }))
     .pipe(gulp.dest('./build'))
     .pipe(gulp.dest('./assets/js'))
     ,
