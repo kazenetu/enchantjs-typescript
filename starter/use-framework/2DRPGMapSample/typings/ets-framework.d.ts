@@ -1125,8 +1125,19 @@ declare module enchant {
              */
             parallel(arg:any):any;
           }
-
 }
+/**
+  *	extendMap.enchant.js
+  *
+  *	enchantMapEditor:
+  *	http://github.com/wise9/enchant.js
+  */
+declare module enchant.extendMap{
+    class ExMap extends Map{
+
+    }
+}
+
 declare function enchant();
 
 declare namespace Rf.ETS.FrameWork {
@@ -1204,6 +1215,50 @@ declare namespace Rf.ETS.FrameWork {
          * 複数のマップ情報の読み込み
          * @method
          * @name FrameWork.Map#LoadDatas
+         * @param {Array} mapData0 - 前景マップ情報（２次元配列）
+         * @param {Array} mapData1 - 背景マップ情報（２次元配列）
+         */
+        LoadDatas(mapData0: any, mapData1: any): void;
+    }
+}
+
+declare namespace Rf.ETS.FrameWork {
+    /**
+     * 拡張マップUI
+     * @classdesc 拡張マップUIクラス
+     * @constructor
+     * @memberof FrameWork
+     * @extends enchant.extendMap.ExMap
+     */
+    class ExMap extends enchant.extendMap.ExMap {
+        protected fileName: string;
+        /**
+         * コンストラクタ
+         * @method
+         * @name FrameWork.ExMap#ExMap
+         * @param {number} tipWidth - マップチップサイズ.幅
+         * @param {number} tipHeight - マップチップサイズ.高さ
+         * @param {Object} parent - 親Group
+         */
+        constructor(tipWidth: number, tipHeight: number, parent: enchant.Group);
+        /**
+         * ファイル名プロパティ
+         * @method
+         * @name FrameWork.Sprite#Sprite
+         * @param {string} value - ファイル名
+         */
+        FileName: string;
+        /**
+         * マップ情報の読み込み
+         * @method
+         * @name FrameWork.ExMap#LoadData
+         * @param {Array} mapData - マップ情報（２次元配列）
+         */
+        LoadData(mapData: any): void;
+        /**
+         * 複数のマップ情報の読み込み
+         * @method
+         * @name FrameWork.ExMap#LoadDatas
          * @param {Array} mapData0 - 前景マップ情報（２次元配列）
          * @param {Array} mapData1 - 背景マップ情報（２次元配列）
          */
@@ -1510,6 +1565,7 @@ declare namespace Rf.ETS.FrameWork {
 /// <reference path="UIParts/Group.d.ts" />
 /// <reference path="UIParts/Label.d.ts" />
 /// <reference path="UIParts/Map.d.ts" />
+/// <reference path="UIParts/ExMap.d.ts" />
 /// <reference path="UIParts/Sprite.d.ts" />
 /// <reference path="UIParts/NoImageSprite.d.ts" />
 /// <reference path="UIParts/Character.d.ts" />
