@@ -14,6 +14,7 @@
         "./UIParts/Sprite.ts",
         "./UIParts/NoImageSprite.ts",
         "./UIParts/Map.ts",
+        "./UIParts/ExMap.ts",
         "./UIParts/Character.ts",
         "./Base/ResourceManager.ts",
         "./Base/GameMain.ts",
