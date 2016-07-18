@@ -867,18 +867,6 @@ declare module enchant {
     }
 
     /**
-     *	extendMap.enchant.js
-    *
-    *	enchantMapEditor:
-    *	http://github.com/wise9/enchant.js
-    */
-    module extendMap{
-        class ExMap extends Map{
-
-        }
-    }
-
-    /**
      * @scope enchant.Group.prototype
      */
     class Group extends Node
@@ -1135,6 +1123,17 @@ declare module enchant {
              */
             parallel(arg:any):any;
           }
-
 }
+/**
+  *	extendMap.enchant.js
+  *
+  *	enchantMapEditor:
+  *	http://github.com/wise9/enchant.js
+  */
+declare module enchant.extendMap{
+    class ExMap extends Map{
+
+    }
+}
+
 declare function enchant();
