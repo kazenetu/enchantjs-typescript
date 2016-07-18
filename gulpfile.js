@@ -172,7 +172,7 @@ gulp.task('_CreateStarterCopyFiles',['_CreateStarterRemoveFiles'], function () {
                 gulp.src([
                     './assets/js/enchant.js' ,
                     './assets/js/plugins/extendMap.enchant.js'
-                ])
+                ],{base:'./assets/js'})
                 .pipe(gulp.dest('./starter/simple/assets/js')),
 
                 gulp.src([
