@@ -170,8 +170,9 @@ gulp.task('_CreateStarterCopyFiles',['_CreateStarterRemoveFiles'], function () {
                 .pipe(gulp.dest('./starter/simple/assets/resources')),
 
                 gulp.src([
-                    './assets/js/enchant.js'
-                ])
+                    './assets/js/enchant.js' ,
+                    './assets/js/plugins/extendMap.enchant.js'
+                ],{base:'./assets/js'})
                 .pipe(gulp.dest('./starter/simple/assets/js')),
 
                 gulp.src([
@@ -194,7 +195,7 @@ gulp.task('_CreateStarterCopyFiles',['_CreateStarterRemoveFiles'], function () {
                 //starter/use-framework/LoginSampleへコピー
                 gulp.src([
                     './typings/ets-framework.d.ts',
-                    './assets/js/*.*'
+                    './assets/js/**/*.*'
                 ],{base:'./'})
                 .pipe(gulp.dest('./starter/use-framework/LoginSample')),
                 gulp.src([
@@ -210,7 +211,7 @@ gulp.task('_CreateStarterCopyFiles',['_CreateStarterRemoveFiles'], function () {
                 //starter/use-framework/2DRPGMapSampleへコピー
                 gulp.src([
                     './typings/ets-framework.d.ts',
-                    './assets/js/*.*'
+                    './assets/js/**/*.*'
                 ],{base:'./'})
                 .pipe(gulp.dest('./starter/use-framework/2DRPGMapSample')),
                 gulp.src([
@@ -226,7 +227,7 @@ gulp.task('_CreateStarterCopyFiles',['_CreateStarterRemoveFiles'], function () {
                 //starter/use-framework/templateへコピー
                 gulp.src([
                     './typings/ets-framework.d.ts',
-                    './assets/js/*.*'
+                    './assets/js/**/*.*'
                 ],{base:'./'})
                 .pipe(gulp.dest('./starter/use-framework/template')),
 

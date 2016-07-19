@@ -1123,6 +1123,17 @@ declare module enchant {
              */
             parallel(arg:any):any;
           }
-
 }
+/**
+  *	extendMap.enchant.js
+  *
+  *	enchantMapEditor:
+  *	http://github.com/wise9/enchant.js
+  */
+declare module enchant.extendMap{
+    class ExMap extends Map{
+
+    }
+}
+
 declare function enchant();

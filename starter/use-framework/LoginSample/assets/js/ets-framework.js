@@ -1,5 +1,5 @@
 /* 
- * enchantjs-typescript 1.0.8
+ * enchantjs-typescript 1.1.0
  * https://github.com/kazenetu/enchantjs-typescript
  * MIT License
  * 
@@ -150,6 +150,81 @@ var Rf;
                 return Map;
             }(enchant.Map));
             FrameWork.Map = Map;
+        })(FrameWork = ETS.FrameWork || (ETS.FrameWork = {}));
+    })(ETS = Rf.ETS || (Rf.ETS = {}));
+})(Rf || (Rf = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var Rf;
+(function (Rf) {
+    var ETS;
+    (function (ETS) {
+        var FrameWork;
+        (function (FrameWork) {
+            /**
+             * 拡張マップUI
+             * @classdesc 拡張マップUIクラス
+             * @constructor
+             * @memberof FrameWork
+             * @extends enchant.extendMap.ExMap
+             */
+            var ExMap = (function (_super) {
+                __extends(ExMap, _super);
+                /**
+                 * コンストラクタ
+                 * @method
+                 * @name FrameWork.ExMap#ExMap
+                 * @param {number} tipWidth - マップチップサイズ.幅
+                 * @param {number} tipHeight - マップチップサイズ.高さ
+                 * @param {Object} parent - 親Group
+                 */
+                function ExMap(tipWidth, tipHeight, parent) {
+                    _super.call(this, tipWidth, tipHeight);
+                    parent.addChild(this);
+                    this.fileName = "";
+                }
+                Object.defineProperty(ExMap.prototype, "FileName", {
+                    /**
+                     * ファイル名プロパティ
+                     * @method
+                     * @name FrameWork.Sprite#Sprite
+                     * @param {string} value - ファイル名
+                     */
+                    set: function (value) {
+                        if (this.fileName !== value) {
+                            this.fileName = value;
+                            this.image = enchant.Core.instance.assets[this.fileName];
+                        }
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                /**
+                 * マップ情報の読み込み
+                 * @method
+                 * @name FrameWork.ExMap#LoadData
+                 * @param {Array} mapData - マップ情報（２次元配列）
+                 */
+                ExMap.prototype.LoadData = function (mapData) {
+                    this.loadData(mapData);
+                };
+                /**
+                 * 複数のマップ情報の読み込み
+                 * @method
+                 * @name FrameWork.ExMap#LoadDatas
+                 * @param {Array} mapData0 - 前景マップ情報（２次元配列）
+                 * @param {Array} mapData1 - 背景マップ情報（２次元配列）
+                 */
+                ExMap.prototype.LoadDatas = function (mapData0, mapData1) {
+                    this.loadData(mapData0, mapData1);
+                };
+                return ExMap;
+            }(enchant.extendMap.ExMap));
+            FrameWork.ExMap = ExMap;
         })(FrameWork = ETS.FrameWork || (ETS.FrameWork = {}));
     })(ETS = Rf.ETS || (Rf.ETS = {}));
 })(Rf || (Rf = {}));
@@ -658,6 +733,7 @@ var Rf;
 /// <reference path="./UIParts/Group.ts"/>
 /// <reference path="./UIParts/Label.ts"/>
 /// <reference path="./UIParts/Map.ts"/>
+/// <reference path="./UIParts/ExMap.ts"/>
 /// <reference path="./UIParts/Sprite.ts"/>
 /// <reference path="./UIParts/NoImageSprite.ts"/>
 /// <reference path="./UIParts/Character.ts"/>
