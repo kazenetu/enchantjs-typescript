@@ -23,9 +23,10 @@ npm installした上で、下記を実行してください。
 |enchant.Sprite |Rf.ETS.FrameWork.NoImageSprite |イメージなしバージョンです |
 |enchant.Sprite |Rf.ETS.FrameWork.Sprite | FileName(value:string)でassets名を指定することでイメージを設定できます |
 |enchant.Map |Rf.ETS.FrameWork.Map |FileName(value:string)でassets名を指定することでイメージを設定できます<br>LoadDataメソッドでマップデータ※を読み込みます |
+|enchant.extendMap.ExMap |Rf.ETS.FrameWork.ExMap |FileName(value:string)でassets名を指定することでイメージを設定できます<br>LoadDataメソッドでマップデータ※を読み込みます |
 
-※Mapデータは[enchantMapEditor](https://github.com/wise9/enchantMapEditor)で作成したデータを利用します。
-
+※Mapデータは[enchantMapEditor](https://github.com/wise9/enchantMapEditor)で作成したデータを利用します。  
+　「マップ拡張を有効にする」にチェックを入れて作成したマップはRf.ETS.FrameWork.ExMapを使用してください。  
 
 # License
 MIT license.
