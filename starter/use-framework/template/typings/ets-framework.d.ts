@@ -835,6 +835,12 @@ declare module enchant {
         hitTest(x:number, y:number):boolean;
 
         /**
+         * Two dimensional array to store if collision detection should be performed for a tile.
+         * @type Number[][]
+         */
+        collisionData:number[][];
+
+        /**
          * Image with which the tile set is displayed on the map.
          * @type enchant.Surface
          */
