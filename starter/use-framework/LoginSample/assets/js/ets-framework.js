@@ -1,5 +1,5 @@
 /* 
- * enchantjs-typescript 1.1.0
+ * enchantjs-typescript 1.1.1
  * https://github.com/kazenetu/enchantjs-typescript
  * MIT License
  * 
@@ -355,9 +355,9 @@ var Rf;
              */
             (function (Direction) {
                 Direction[Direction["Up"] = 0] = "Up";
-                Direction[Direction["Right"] = 1] = "Right";
+                Direction[Direction["Left"] = 1] = "Left";
                 Direction[Direction["Down"] = 2] = "Down";
-                Direction[Direction["Left"] = 3] = "Left";
+                Direction[Direction["Right"] = 3] = "Right";
             })(FrameWork.Direction || (FrameWork.Direction = {}));
             var Direction = FrameWork.Direction;
             /**
