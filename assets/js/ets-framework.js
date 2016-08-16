@@ -1,5 +1,5 @@
 /* 
- * enchantjs-typescript 1.1.1
+ * enchantjs-typescript 1.1.2
  * https://github.com/kazenetu/enchantjs-typescript
  * MIT License
  * 
